@@ -48,17 +48,20 @@ Nếu chỉ do ngưỡng, mức tụt sẽ diễn ra đồng đều. Tuy nhiên,
 
 Nhìn vào bảng trên, các dataset tài liệu ngắn thậm chí còn **cao hơn hoặc ngang bằng bài báo**, nhưng các dataset **tài liệu dài và ngữ cảnh phức tạp** (Wice, MeetB, MediaS, XSum, RAGTruth) lại **tụt rất sâu**. 
 
-Nguyên nhân đến từ **3 yếu tố kỹ thuật sau**:
+Nguyên nhân đến từ **các yếu tố kỹ thuật & giới hạn phần cứng sau**:
 
-#### A. Thủ phạm ngầm: Cấu hình `CHUNK_SIZE = 500` trong Notebook
-* Trong thiết kế gốc của `Bespoke-MiniCheck-7B`, ngữ cảnh mô hình hỗ trợ tới **32,768 tokens**, giá trị `default_chunk_size = 32768 - 300 = 32,468 tokens`. Tức là bài báo gốc **không bao giờ chia nhỏ văn bản** mà đưa toàn bộ tài liệu vào một lần.
-* Tuy nhiên, trong notebook Kaggle (Cell 12), để tránh tràn RAM/VRAM trên card T4 16GB, bạn đã cấu hình:
-  ```python
-  CHUNK_SIZE = 500
-  p_labels, r_probs, _, _ = scorer_7b.score(
-      docs=b_docs, claims=b_claims, chunk_size=CHUNK_SIZE
-  )
-  ```
+#### A. Thủ phạm ngầm: Cấu hình `CHUNK_SIZE = 500` bắt buộc do giới hạn VRAM
+* **Thiết kế gốc của bài báo:** `Bespoke-MiniCheck-7B` hỗ trợ ngữ cảnh tới **32,768 tokens**, giá trị `default_chunk_size = 32768 - 300 = 32,468 tokens` (hoặc tối thiểu ~3.800 tokens). Tức là bài báo gốc trên máy chủ **NVIDIA A6000 (48GB VRAM)** **không bao giờ chia nhỏ văn bản** mà đưa toàn bộ tài liệu vào một lần.
+* **Bối cảnh thực tế trên Kaggle (GPU Tesla T4 16GB):**
+  * Khi nạp mô hình 7B vào engine vLLM trên 2 card T4 (mỗi card khả dụng ~14.56 GiB), việc giữ nguyên `chunk_size` ~3.800 tokens và gửi hàng nghìn mẫu cùng lúc khiến bộ nhớ đệm **KV Cache** của vLLM bị bùng nổ vượt quá 16GB $\rightarrow$ **Sập CUDA OOM ngay lập tức**!
+  * Để cứu tiến trình, bạn đã buộc phải áp dụng giải pháp tối ưu bộ nhớ:
+    ```python
+    CHUNK_SIZE = 500        # Giảm 85% dung lượng token cần xử lý trong mỗi prompt
+    SUB_BATCH_SIZE = 50     # Chỉ nhận 50 mẫu mỗi lần, giải phóng ngay KV Cache rồi mới sang lượt tiếp theo
+    p_labels, r_probs, _, _ = scorer_7b.score(
+        docs=b_docs, claims=b_claims, chunk_size=CHUNK_SIZE
+    )
+    ```
 * **Hậu quả khi kết hợp với thuật toán SentenceFusion (`min-max`)**:
   * Mã nguồn `inference.py` tổng hợp điểm qua công thức:
     $$\text{Sentence Score} = \max_{\text{chunks}} P(\text{chunk}, \text{sentence})$$
@@ -70,9 +73,23 @@ Nguyên nhân đến từ **3 yếu tố kỹ thuật sau**:
   * Trong tổng số **6,322 ca đoán sai**, có tới **4,925 ca là False Negative (chiếm 77.9%)**, gấp gần **4 lần** số ca False Positive (1,397 ca)!
   * Cả 3 Case Study mẫu trong Cell 18 đều là ca **False Negative cực đoan** (xác suất mô hình đưa ra chỉ $0.0005$ dù ground truth là $1$).
 
+---
+
+#### 🛠️ So sánh đối chiếu: Kỹ thuật xử lý OOM giữa 2 nhánh Notebook
+Sự khác biệt trong việc tinh chỉnh xử lý OOM giữa 2 notebook làm sáng tỏ toàn bộ bức tranh thực nghiệm:
+
+| Tiêu chí | Notebook 1: Mô hình nhỏ (`Flan-T5`, `DeBERTa`, `RoBERTa`) | Notebook 2: Mô hình lớn (`Bespoke-MiniCheck-7B`) |
+| :--- | :--- | :--- |
+| **Sự cố OOM thực tế** | Chạy ~40 phút, sập ở **mẫu 5.014** (VRAM tích tụ rác 11.6 GiB, gặp doc 2.048 token ma trận Attention đòi 3.79 GiB > 2.96 GiB trống). | vLLM tràn bộ nhớ đệm **KV Cache** ngay khi nạp batch tài liệu lớn với chunk mặc định ~3.800 tokens. |
+| **Giải pháp áp dụng** | 1. Hạ `batch_size = 8` (thay vì 32).<br>2. Gom cụm `sub_batch_size = 100` kết hợp `gc.collect()` + `torch.cuda.empty_cache()`.<br>3. Bật `PYTORCH_CUDA_ALLOC_CONF = 'expandable_segments:True'`. | 1. Ép `CHUNK_SIZE = 500` (thay vì ~3.800 tokens).<br>2. Chạy `SUB_BATCH_SIZE = 50` để xả KV Cache liên tục.<br>3. Tensor Parallel `tensor_parallel_size = 2` & `enforce_eager = True`. |
+| **Bản chất tinh chỉnh** | **Thuần túy là tối ưu hóa cấp phát bộ nhớ (Memory Allocation)**. Không đụng chạm hàm mục tiêu hay cấu trúc chunk mặc định của bài báo (Flan-T5 500, DeBERTa 400). | **Đánh đổi giữa tài nguyên và ngữ cảnh (Trade-off)**: Băm nhỏ văn bản từ 3.800 xuống 500 token để card 16GB chạy được. |
+| **Tác động lên kết quả** | Độ chính xác bám sát 99.3% – 100.7% bài báo (chỉ lệch nhẹ do sai số phần cứng T4 vs A6000). | Bị mất điểm ở các dataset ngữ cảnh dài (Wice tụt -6.08%, MeetB tụt -3.46%) do đứt gãy multi-hop. |
+
+---
+
 #### B. Sai số dấu phẩy động phần cứng (Hardware Precision: FP16 vs BF16)
-* Nhóm tác giả chạy thực nghiệm trên **NVIDIA A6000 (48GB VRAM)** có Compute Capability 8.6 $\rightarrow$ Code tự động chạy định dạng **`torch.bfloat16`**.
-* Bạn chạy trên **Kaggle 2x NVIDIA T4** có Compute Capability 7.5 $\rightarrow$ Code tự động fallback về **`torch.float16`** (`inference.py` dòng 315).
+* Nhóm tác giả chạy thực nghiệm trên **NVIDIA A6000 (48GB VRAM)** có Compute Capability 8.6 $\rightarrow$ Code tự động chạy định dạng **`torch.bfloat16`** (8-bit exponent, dải động tương đương FP32).
+* Bạn chạy trên **Kaggle 2x NVIDIA T4** có Compute Capability 7.5 (không có Tensor Core BF16) $\rightarrow$ Code tự động fallback về **`torch.float16`** (`inference.py` dòng 315).
 * Kiến trúc LLaMA-3 (nền tảng của Bespoke-7B) nổi tiếng trong cộng đồng mã nguồn mở là rất dễ gặp hiện tượng **activation outliers** gây tràn số hoặc trôi phân phối logit khi ép chạy trên **FP16** thay vì **BF16**.
 
 #### C. Cơ chế trích xuất xác suất `logprobs=5` của vLLM
@@ -83,7 +100,7 @@ Nguyên nhân đến từ **3 yếu tố kỹ thuật sau**:
 
 ### 3. Tổng kết Insight & Hướng biện luận cho Đồ Án / Báo Cáo
 
-Nếu bạn đang làm báo cáo hoặc bảo vệ đồ án, sự chênh lệch **76.05% vs 77.41% (-1.36%)** không hề là "thất bại", mà là **một điểm sáng nghiên cứu (Ablation / Resource Constraint Finding)** rất giá trị:
+Nếu bạn đang làm báo cáo hoặc bảo vệ đồ án, sự chênh lệch **76.05% vs 77.41% (-1.36%)** không hề là "thất bại", mà là **một điểm sáng nghiên cứu (Ablation / Resource Constraint Finding)** rất giá trị, Deepseek v3 671 tỷ tham số >> bespoke, chứng tỏ performance của bespoke ổn so với số lượng tham số của nó:
 
 1. **Khẳng định tính tái lập (Reproducibility)**:
    * Trên môi trường tài nguyên giới hạn (2 card T4 16GB miễn phí của Kaggle so với GPU A6000/A100 cấp trung tâm dữ liệu), bạn đã tái lập được **~98.2% hiệu năng gốc** của mô hình SOTA 7B trên toàn bộ 29,320 mẫu của 11 bộ dữ liệu.
@@ -94,3 +111,25 @@ Nếu bạn đang làm báo cáo hoặc bảo vệ đồ án, sự chênh lệch
 3. **Hướng khắc phục nếu có thêm tài nguyên (Next Steps)**:
    * **Nới rộng Chunk Size**: Vì bạn đã đặt `max_model_len = 4096`, hoàn toàn có thể tăng `chunk_size` từ 500 lên **2,500 – 3,000 tokens** (vẫn vừa vặn trong VRAM T4 mà bao phủ trọn vẹn 98% độ dài tài liệu của benchmark, không bị xé vụn văn bản).
    * **Tune ngưỡng trên tập Dev**: Áp dụng search threshold $\theta \in [0.3, 0.7]$ trên tập validation của từng dataset trước khi suy luận nhãn, $BAcc$ trung bình sẽ tiệm cận hoặc vượt mức 77.41% của bài báo.
+
+---
+
+### 4. Q&A Kỹ Thuật: Giải Đáp Thắc Mắc Về Phân Bổ Bộ Nhớ & Giới Hạn Phần Cứng
+
+#### **Q1: Việc chạy chung cả 3 mô hình nhỏ trên cùng 1 notebook có phải là nguyên nhân làm tích tụ bộ nhớ và sập OOM ở mẫu 5.014 không?**
+> **Trả lời: HOÀN TOÀN KHÔNG.**
+* Sự cố sập OOM sau ~40 phút diễn ra ngay tại **mẫu thứ 5.014** khi notebook mới chỉ đang chạy mô hình đầu tiên là **`flan-t5-large`**.
+* Hai mô hình sau (`deberta-v3-large` và `roberta-large`) **chưa hề được nạp vào VRAM, chưa chiếm dụng 1 MB nào**. Do đó không hề có hiện tượng "chạy chung làm tràn bộ nhớ chéo".
+
+#### **Q2: Nếu tách ra chạy riêng từng notebook độc lập cho mỗi mô hình, chúng có bị lỗi sập OOM không?**
+> **Trả lời: CÓ, CHẮC CHẮN VẪN SẬP OOM Y HỆT nếu giữ nguyên cấu hình cũ (`batch_size = 32`).**
+* Bản chất lỗi sập là do nội tại của 1 mô hình khi chạy batch 32 trên GPU 16GB:
+  1. *PyTorch Caching Allocator* giữ lại bộ nhớ đệm qua 5.000 mẫu đầu ngốn **11.60 GiB / 14.56 GiB** (chỉ còn trống 2.96 GiB).
+  2. Đến mẫu 5.014 gặp văn bản dài 2.048 token, ma trận Attention bậc hai $O(N^2)$ với `batch_size = 32` yêu cầu cấp phát tức thời **3.79 GiB** $\rightarrow$ Vượt quá 2.96 GiB trống $\rightarrow$ Sập OOM!
+* Dù chạy riêng từng notebook, cứ đến mẫu 5.014 đó với `batch_size = 32`, mô hình vẫn sẽ sập bộ nhớ.
+
+#### **Q3: Tại sao sau khi fix (`batch_size = 8` + `sub_batch_size = 100`), notebook lại chạy trọn vẹn cả 3 mô hình (7.3 tiếng liên tục)?**
+> **Trả lời: Nhờ cơ chế kiểm soát đỉnh cấp phát và xả rác chủ động:**
+* **Hạ `batch_size = 8`:** Giảm đỉnh cấp phát Attention xuống dưới **0.95 GiB** (luôn vừa vặn an toàn trong VRAM trống của T4).
+* **Xả rác chủ động (`sub_batch_size = 100`):** Sau mỗi 100 mẫu gọi `gc.collect()` + `torch.cuda.empty_cache()` để reset VRAM về mức cơ sở ~3–5 GB, triệt tiêu tích tụ phân mảnh.
+* Sau khi Flan-T5 xong 29.320 mẫu, VRAM sạch bóng để DeBERTa và RoBERTa chạy tiếp nối an toàn, hoàn thành trọn vẹn **87.960 lượt dự đoán**.
