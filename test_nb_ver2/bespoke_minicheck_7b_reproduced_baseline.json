@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "snapshot_kind": "executed_reproduction",
+  "model": "Bespoke-MiniCheck-7B",
+  "metric": {
+    "name": "Balanced Accuracy",
+    "abbreviation": "BAcc",
+    "unit": "percent",
+    "aggregation": "unweighted macro average across the 11 datasets"
+  },
+  "source": {
+    "notebook": "../test_nb_ver1/bespoke-minicheck-7b-full-benchmark-on-kaggle-2x.ipynb",
+    "output_cells": [12, 14],
+    "run_environment": "Kaggle, 2x NVIDIA T4",
+    "run_configuration": {
+      "test_mode": false,
+      "max_model_len": 4096,
+      "chunk_size": 500,
+      "sub_batch_size": 50
+    }
+  },
+  "datasets": [
+    {"name": "AggreFact-CNN", "sample_count": 558, "reproduced_bacc_percent": 69.99, "runtime_seconds": 900.0},
+    {"name": "AggreFact-XSum", "sample_count": 558, "reproduced_bacc_percent": 74.94, "runtime_seconds": 187.5},
+    {"name": "ClaimVerify", "sample_count": 1088, "reproduced_bacc_percent": 73.94, "runtime_seconds": 1807.8},
+    {"name": "ExpertQA", "sample_count": 3702, "reproduced_bacc_percent": 57.96, "runtime_seconds": 2009.7},
+    {"name": "FactCheck-GPT", "sample_count": 1566, "reproduced_bacc_percent": 77.99, "runtime_seconds": 200.6},
+    {"name": "Lfqa", "sample_count": 1911, "reproduced_bacc_percent": 86.14, "runtime_seconds": 622.6},
+    {"name": "RAGTruth", "sample_count": 16371, "reproduced_bacc_percent": 82.33, "runtime_seconds": 8224.3},
+    {"name": "Reveal", "sample_count": 1710, "reproduced_bacc_percent": 87.82, "runtime_seconds": 225.6},
+    {"name": "TofuEval-MediaS", "sample_count": 726, "reproduced_bacc_percent": 73.70, "runtime_seconds": 570.6},
+    {"name": "TofuEval-MeetB", "sample_count": 772, "reproduced_bacc_percent": 74.84, "runtime_seconds": 598.1},
+    {"name": "Wice", "sample_count": 358, "reproduced_bacc_percent": 76.92, "runtime_seconds": 554.5}
+  ],
+  "summary": {
+    "dataset_count": 11,
+    "total_benchmark_sample_count": 29320,
+    "macro_bacc_percent": 76.05,
+    "total_measured_runtime_seconds": 15901.3,
+    "total_measured_runtime_minutes": 265.0
+  },
+  "interpretation": "These are this repository's executed Kaggle reproduction results, not MiniCheck paper results."
+}
