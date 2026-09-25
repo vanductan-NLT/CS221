@@ -207,19 +207,22 @@ $$\text{BAcc} = \frac{1}{2} \left( \text{Recall}_0 + \text{Recall}_1 \right) = \
     $$\Delta \text{Recall}_1 = \frac{10}{111} \approx 9.01\% \implies \Delta \text{BAcc} = \frac{9.01\%}{2} \approx 4.5\%$$
   * Đây là lý do tại sao Wice có biên độ chênh lệch BAcc lớn nhất trong số 11 dataset, trong khi các dataset quy mô lớn (như RAGTruth, AggreFact) chỉ dao động trong khoảng $0.05\% \to 1.3\%$.
 
-### 6.5. Giới Hạn VRAM (16GB vs 48GB) Và Cấu Hình Batching
+### 6.5. Giới Hạn VRAM (16GB vs 48GB) Và Cấu Hình Quản Lý Bộ Nhớ Cho Mô Hình Nhỏ
 * **A6000 (48GB VRAM - Bài báo gốc):**
-  * Dung lượng bộ nhớ dồi dào cho phép nhóm tác giả chạy batch size lớn (ví dụ: `batch_size = 32`), không gặp áp lực tràn bộ nhớ (memory fragmentation / thrashing), giữ trọn vẹn context dài mà không cần chia nhỏ mảng bộ nhớ.
+  * Với dung lượng VRAM lớn (48GB), tác giả có thể chạy cấu hình suy luận với `batch_size` lớn (như 32 hoặc 64) mà không hề gặp áp lực phân mảnh bộ nhớ (*Memory Fragmentation*) hay tràn VRAM.
 * **2x Tesla T4 (14.56 GiB VRAM khả dụng mỗi card - Kaggle):**
-  * **Ở nhánh mô hình nhỏ (Flan-T5 / DeBERTa / RoBERTa):** Với `batch_size = 32`, PyTorch Caching Allocator đã ngốn 11.60 GiB sau 5.000 mẫu đầu, và sập OOM ở mẫu 5.014 khi gặp tài liệu 2.048 token (ma trận Attention đòi 3.79 GiB trong khi chỉ còn trống 2.96 GiB). Giải pháp bắt buộc là hạ `batch_size = 8` và gom cụm `sub_batch_size = 100` với lệnh xả rác bộ nhớ chủ động `gc.collect()` + `torch.cuda.empty_cache()` để duy trì VRAM ổn định ở mức ~3–5 GB.
-  * **Ở nhánh mô hình 7B (Bespoke-MiniCheck-7B):** Không gian VRAM 16GB của T4 hoàn toàn không đủ chỗ cho vLLM duy trì KV Cache nếu giữ nguyên `chunk_size` gốc (~3.800 tokens) cho hàng nghìn mẫu. Do đó, notebook 7B bắt buộc phải đánh đổi: chia đôi mô hình qua Tensor Parallel (`tensor_parallel_size = 2`), ép `CHUNK_SIZE = 500`, `SUB_BATCH_SIZE = 50` và bật `enforce_eager = True`.
-  * **Ảnh hưởng số liệu:** Việc phân mảnh sub-batch và dọn đệm liên tục tạo ra sự khác biệt nhỏ về padding động (dynamic padding) giữa các batch so với một lần chạy batch lớn toàn cục trên máy chủ A6000.
+  * **Sự cố sập OOM ở mẫu 5.014:** Khi chạy với cấu hình mặc định `batch_size = 32`, PyTorch Caching Allocator đã ngậm 11.60 GiB bộ nhớ đệm sau 5.000 mẫu đầu tiên. Đến mẫu 5.014 gặp văn bản dài 2.048 token, ma trận Attention $O(N^2)$ bùng nổ đòi cấp phát tức thời 3.79 GiB trong khi VRAM khả dụng chỉ còn 2.96 GiB $\rightarrow$ Sập `CUDA Out of Memory`.
+  * **Giải pháp khắc phục an toàn:** Hạ `batch_size = 8` (giảm đỉnh RAM Attention xuống < 0.95 GiB) và gom cụm `sub_batch_size = 100` với lệnh xả rác chủ động `gc.collect()` + `torch.cuda.empty_cache()` để khóa VRAM ổn định ở mức ~3–5 GB.
+  * **Bảo toàn nguyên vẹn Chunk Size:** Khác với nhánh Bespoke-7B (bị ép băm nhỏ văn bản từ 3.800 xuống 500 token), ở nhánh mô hình nhỏ này, **kích thước chunk 400 (DeBERTa/RoBERTa) và 500 từ (Flan-T5) hoàn toàn là giá trị mặc định nguyên bản của bài báo**, không hề bị cắt gọt.
+  * **Ảnh hưởng số liệu:** Việc gom sub-batch 100 mẫu và xả cache chỉ tạo ra sự khác biệt cực nhỏ về padding động (*dynamic padding*) giữa các batch so với một lần chạy batch lớn toàn cục trên máy chủ A6000.
 
 ---
 
 > [!NOTE]
 > **Tóm lại:** Sự chênh lệch số liệu giữa môi trường Kaggle và bài báo gốc **hoàn toàn không phải do lỗi lập trình hay sai sót dữ liệu**, mà là hệ quả tất yếu của chuỗi chuyển đổi vật lý:
+>
 > $$\text{Kiến trúc GPU (Ampere vs Turing)} \longrightarrow \text{Sai số làm tròn cuBLAS (GEMM \& BF16/FP16)}$$
+>
 > $$\longrightarrow \text{Lệch logit } 10^{-3} \longrightarrow \text{Lật nhãn ở ngưỡng } 0.5 \longrightarrow \text{Khuếch đại độ lệch BAcc ở tập mẫu nhỏ (Wice)}$$
 
 ---
