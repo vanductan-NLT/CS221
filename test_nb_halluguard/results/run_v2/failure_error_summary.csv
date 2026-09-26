@@ -1,0 +1,2 @@
+status,error_type,error_message,count
+INFERENCE_FAILURE,ValueError,The decoder prompt (length 4312) is longer than the maximum model length of 4096. Make sure that `max_model_len` is no smaller than the number of text tokens.,1
