@@ -1,0 +1,13 @@
+dataset,n_expected,n_success,n_failed,coverage,balanced_accuracy_percent,metric_error
+AggreFact-CNN,558,558,0,1.0,69.250972,
+AggreFact-XSum,558,558,0,1.0,73.208020,
+ClaimVerify,1088,1088,0,1.0,77.355867,
+ExpertQA,3702,3702,0,1.0,58.936592,
+FactCheck-GPT,1566,1566,0,1.0,72.064858,
+Lfqa,1911,1911,0,1.0,86.510236,
+RAGTruth,16371,16371,0,1.0,80.111882,
+Reveal,1710,1710,0,1.0,88.388359,
+TofuEval-MediaS,726,726,0,1.0,68.801948,
+TofuEval-MeetB,772,772,0,1.0,74.869239,
+Wice,358,358,0,1.0,73.180873,
+Macro average,29320,29320,0,1.0,74.788986,
