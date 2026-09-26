@@ -22,6 +22,7 @@
   "runtime_device": "cuda:0",
   "resumed_from_successful_rows": 4500,
   "source_notebook": "test_nb_factcg/factcg-minicheck-full-benchmark-run-v2.ipynb",
-  "full_predictions_in_git": false,
-  "note": "The 1.76 GB Kaggle output was not committed because it primarily contains the model cache and cloned repository. The executed notebook, metrics, manifest, and empty failures table are archived here. The full prediction CSV is not committed because the available clipboard export was truncated to 3,184 of 29,320 rows."
+  "full_predictions_in_git": true,
+  "predictions_sha256": "1a36d34482fa916f2926af5d60fd55e899b0fdf4a1eb103b5dfb29026284011b",
+  "note": "The complete row-level prediction CSV, executed notebook, metrics, manifest, and empty failures table are archived here. The remaining Kaggle output was not committed because it primarily contains the model cache and cloned repository."
 }
