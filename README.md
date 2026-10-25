@@ -21,11 +21,11 @@ Trình bày 15 phút. Mục tiêu: xong mọi phần trước 15/11/2026.
 
 ## Thứ tự gợi ý để bắt đầu
 
-1. Issue #1: mở repo bằng Claude Code, kiểm tra khung.
-2. Issue #2, #3, #4 (làm tay, song song): nhắn cô, tạo tài khoản Kaggle, upload dữ liệu BM25.
-3. Issue #6, #11, #20 (Claude Code, làm được ngay): notebook chạy code gốc, lưu độ tự tin, script rút gọn kết quả.
-4. Issue #5 và #7 (chạy trên Kaggle): smoke test, chạy đối chứng.
-5. Issue #8 → #9 → #10: so sánh, quyết định, chốt tập câu hỏi. Sau đó mới vào M2.
+1. Issue #4: mở repo bằng Claude Code, kiểm tra khung.
+2. Issue #5, #6, #7 (làm tay, song song): nhắn cô, tạo tài khoản Kaggle, upload dữ liệu BM25.
+3. Issue #9, #14, #23 (Claude Code, làm được ngay): notebook chạy code gốc, lưu độ tự tin, script rút gọn kết quả.
+4. Issue #8 và #10 (chạy trên Kaggle): smoke test, chạy đối chứng.
+5. Issue #11 → #12 → #13: so sánh, quyết định, chốt tập câu hỏi. Sau đó mới vào M2.
 6. Các bài học nền ở M1 làm xen kẽ, không phải chờ.
 
 ## Thư mục

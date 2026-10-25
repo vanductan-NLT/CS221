@@ -17,7 +17,7 @@ Giữ nguyên tên notebook đặt: `{mô hình}__{dtype}__{cách}__shots{số s
 
 Bản đầy đủ (notebook ghi): `id, prop, prop_id, question, s_pop, pred, is_correct, has_answer, retrieval_id, passage, model, method, n_shots`.
 
-Bản rút gọn: bỏ `question` và `passage`, giữ phần còn lại. Do `scripts/slim_results.py` sinh ra (issue #20).
+Bản rút gọn: bỏ `question` và `passage`, giữ phần còn lại. Do `scripts/slim_results.py` sinh ra (issue #23).
 
 - `has_answer`: đoạn văn top-1 có chứa đáp án hay không (chỉ có ở BM25 và GenRead).
 
