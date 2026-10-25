@@ -1,0 +1,21 @@
+# Kết quả đầy đủ và dữ liệu lớn: không đưa lên git
+results/raw/
+data/raw/
+*.jsonl
+*.jsonl.zip
+
+# Khóa và thông tin cá nhân
+kaggle.json
+.env
+*.key
+
+# Python và notebook
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
