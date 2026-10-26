@@ -93,6 +93,7 @@ API_WORKERS  = 4
 # --- thực nghiệm ---
 RETRIEVAL_DIR = None           # thư mục chứa file BM25/contriever (vd. "/kaggle/input/<tên-dataset>"); None = tự dò trong /kaggle/input và WORK/retrieval
 N_QUESTIONS  = 3000            # 0 = toàn bộ ~14k. Bước adaptive cần đủ mẫu mỗi loại quan hệ: nên >= 3000, tốt nhất toàn bộ.
+SUBSET_IDS   = None            # file id cố định, mỗi dòng một id (đường dẫn hoặc URL), vd. "data/subset_300_ids.txt". Đặt thì bỏ qua N_QUESTIONS. None = lấy N_QUESTIONS câu đầu của hoán vị seed 633.
 N_SHOTS      = None            # None = tự chọn (hf: 15-shot như paper cho Neo/OPT; api: 0-shot như paper cho GPT-3)
 MAX_NEW_TOKENS = 15
 GENREAD_TOKENS = 150
@@ -135,13 +136,13 @@ else:
     _name = f"api-{API_PROVIDER}-{API_MODEL}"
 MODEL_ALIAS = _name.replace("/", "_")
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
-print(f"backend={BACKEND} model={MODEL_ALIAS} shots={N_SHOTS} N={N_QUESTIONS or 'all'}")
+print(f"backend={BACKEND} model={MODEL_ALIAS} shots={N_SHOTS} N={('subset ' + str(SUBSET_IDS)) if SUBSET_IDS else (N_QUESTIONS or 'all')}")
 if BACKEND == "hf":
     print(f"dtype yêu cầu={DTYPE} -> dùng={DTYPE_USED} | quant={QUANT}")
 
 # %% [markdown]
 # ## 2. Dữ liệu PopQA gốc
-# Lấy trực tiếp từ repo tác giả. `s_pop` = lượt xem Wikipedia của chủ thể (độ phổ biến). Lấy mẫu **lồng nhau** (xáo trộn cố định theo `SEED` rồi lấy N đầu) nên tăng `N_QUESTIONS` sau này sẽ tái sử dụng được kết quả đã chạy.
+# Lấy trực tiếp từ repo tác giả. `s_pop` = lượt xem Wikipedia của chủ thể (độ phổ biến). Lấy mẫu **lồng nhau** (xáo trộn cố định theo `SEED` rồi lấy N đầu) nên tăng `N_QUESTIONS` sau này sẽ tái sử dụng được kết quả đã chạy. Muốn chạy đúng một danh sách câu hỏi cố định (vd. 300 câu dùng chung với code gốc, tạo bằng `scripts/make_subset.py`), đặt `SUBSET_IDS` ở ô cấu hình.
 
 # %% [code]
 import urllib.request
@@ -154,8 +155,21 @@ df_all["id"] = df_all["id"].astype(int)
 PROP_IDS = sorted(df_all["prop_id"].unique().tolist())
 POOL = {pid: g.to_dict("records") for pid, g in df_all.groupby("prop_id")}   # nguồn lấy few-shot
 perm = df_all.sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-eval_df = perm.head(N_QUESTIONS if N_QUESTIONS else len(perm)).copy()
-print(df_all.shape, "-> đánh giá trên", len(eval_df), "câu")
+if SUBSET_IDS:
+    # tập câu hỏi cố định (vd. 300 câu dùng chung với code gốc để đối chứng): giữ đúng thứ tự trong file
+    if str(SUBSET_IDS).startswith(("http://", "https://")):
+        with urllib.request.urlopen(SUBSET_IDS) as resp:
+            _subset_text = resp.read().decode("utf-8")
+    else:
+        _subset_text = Path(SUBSET_IDS).read_text(encoding="utf-8")
+    _subset = [int(tok) for tok in _subset_text.split()]
+    assert len(_subset) == len(set(_subset)), "SUBSET_IDS có id bị trùng"
+    _missing = sorted(set(_subset) - set(df_all["id"]))
+    assert not _missing, f"SUBSET_IDS có id không có trong PopQA: {_missing[:5]}"
+    eval_df = df_all.set_index("id", drop=False).loc[_subset].reset_index(drop=True)
+else:
+    eval_df = perm.head(N_QUESTIONS if N_QUESTIONS else len(perm)).copy()
+print(df_all.shape, "-> đánh giá trên", len(eval_df), "câu", f"(theo SUBSET_IDS={SUBSET_IDS})" if SUBSET_IDS else "")
 print(eval_df["prop"].value_counts().to_string())
 
 # %% [markdown]
