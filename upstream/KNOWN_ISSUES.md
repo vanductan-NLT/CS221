@@ -10,7 +10,7 @@ Kiểm tra ngày 25/10/2026 trên commit `8172ab0`, với file BM25 tác giả �
    - Khóa trong file BM25 là nguyên văn câu hỏi, nên câu hỏi chính khớp 14.267/14.267, còn ví dụ mẫu khớp 0/14.267.
    - Kết quả: mọi ví dụ mẫu của BM25 rơi về dạng không có đoạn văn, code chỉ in `missing retrieval` rồi chạy tiếp.
    - Không rõ file gốc tác giả dùng khi viết paper có khóa kiểu nào (thư mục Google Drive đã mất).
-   - Notebook của nhóm thì có kèm đoạn văn cho ví dụ mẫu. Quyết định chọn cách nào: issue #9.
+   - Notebook của nhóm thì có kèm đoạn văn cho ví dụ mẫu. Quyết định chọn cách nào: issue #12.
 2. **Câu hỏi trùng văn bản dùng chung một đoạn văn.**
    - PopQA có 881 câu hỏi trùng văn bản, phủ 2.080 dòng (ví dụ hai người khác nhau cùng tên).
    - `retrieval_dict` lấy văn bản câu hỏi làm khóa, nên các dòng trùng nhận cùng một đoạn văn.
