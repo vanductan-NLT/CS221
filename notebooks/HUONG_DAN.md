@@ -122,3 +122,33 @@ Mặc định API chạy 0-shot (như paper với GPT-3). Notebook có ô ước
 | Output toàn rỗng / sai bất thường ở model Qwen fp16 | Thử `DTYPE="fp32"` (nếu vừa VRAM), `QUANT="4bit"` hoặc một model khác (fp16 đôi khi gây tràn số ở một số model) |
 | Bước adaptive báo "quá ít mẫu" | Tăng `N_QUESTIONS` (nên ≥3000) |
 | API trả lỗi tham số | Notebook tự thử `max_completion_tokens` và bỏ `temperature`; nếu vẫn lỗi, kiểm tra tên model và dùng model không phải reasoning |
+
+## 8. Đối chiếu với code gốc: cùng 300 câu
+
+Để biết notebook của nhóm có làm đúng như code tác giả không, ta chạy cả hai trên **cùng 300 câu** (`data/subset_300_ids.txt`) rồi so (issue #10 và #11). Cùng một tập câu để chênh lệch còn lại chỉ do khác biệt code, không phải do bốc mẫu. Danh sách 300 id do `scripts/make_subset.py` tạo (seed 633, cùng cách xáo trộn với notebook chính).
+
+### 8.1. Notebook của nhóm chạy đúng 300 câu
+Trong ô cấu hình của `adaptive_retrieval_repro.ipynb`, đặt `SUBSET_IDS` là đường dẫn file hoặc URL (đặt thì `N_QUESTIONS` bị bỏ qua):
+
+```python
+SUBSET_IDS = "https://raw.githubusercontent.com/vanductan-NLT/CS221/main/data/subset_300_ids.txt"
+```
+
+URL trên chỉ có sau khi file đã nằm trên nhánh `main`; trước đó dùng nhánh đang làm thay cho `main`, hoặc upload file lên Kaggle rồi đặt đường dẫn. Id bị trùng hoặc không có trong PopQA thì notebook dừng và báo rõ.
+
+### 8.2. Code gốc: `notebooks/upstream_kaggle.ipynb`
+1. Kaggle → *Create → New Notebook → File → Import Notebook* → chọn `upstream_kaggle.ipynb`.
+2. *Settings*: **Accelerator = GPU** (T4 ×2 hoặc P100), **Internet = On**. *Add Input* → dataset BM25 (`popqa-bm25-retrieval`).
+3. Ô cấu hình: mặc định GPT-Neo 1.3B, `vanilla` + `BM25`, 300 câu, 15 ví dụ mẫu. Nếu PR chưa merge vào `main`, đặt `REPO_REF` là tên nhánh của PR. Repo phải public thì notebook mới clone được.
+4. *Run All*. Notebook clone repo, chép `upstream/` ra thư mục làm việc, chạy `run_model.py` (không sửa) hai lần, rồi **kiểm id kết quả có đúng 300 id của `subset_300_ids.txt` không**.
+5. Cần thấy dòng `ĐÚNG: cả 2 kết quả khớp đúng 300 id ...` rồi mới tới bảng độ chính xác. Dòng `KẾT QUẢ KHÔNG KHỚP ...` nghĩa là không dùng số đó để đối chứng.
+6. *Save Version → Save & Run All (Commit)* để giữ thư mục `upstream_results/`. Ô cuối in sẵn một dòng gợi ý để ghi vào `results/RUNS.md` (điền thêm ngày và link phiên bản notebook).
+
+Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `jsonlines`/`openai`, `--ret_path`, `--sample 300` trên file đầy đủ, chạy trên bản sao của `upstream/`) nằm ở đầu notebook. Chưa có số đo tốc độ của code gốc trên GPU thật; số này sẽ có sau lần chạy đầu tiên.
+
+| Triệu chứng | Cách xử lý |
+|---|---|
+| `Chưa bật GPU` | *Settings → Accelerator → GPU*, chạy lại từ ô đầu |
+| `git clone` lỗi | Bật *Internet*; kiểm tra repo còn public và `REPO_REF` đúng tên nhánh |
+| `Không thấy file BM25 .jsonl` | *Add Input* dataset BM25, hoặc đặt `RET_PATH` thủ công |
+| `KẾT QUẢ KHÔNG KHỚP data/subset_300_ids.txt` | Xem cột `thieu`/`thua`. Thường do phiên bản thư viện đổi cách dùng bộ sinh số ngẫu nhiên; dán bảng kiểm vào issue #10 để xử lý, đừng dùng số đó |
