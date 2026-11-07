@@ -171,3 +171,12 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 - Thêm cột `conf` (issue #14, định nghĩa ở `results/README.md`). Đã thử trên CPU với GPT-Neo và OPT tí hon: câu trả lời giống hệt bản không có `conf`; chạy tiếp từ checkpoint cho cùng kết quả.
 - Trước khi chạy đủ, notebook chạy thử 300 câu cho mọi lượt, kiểm đúng 300 ID theo thứ tự và dựng lại từng prompt.
 - Muốn chạy mô hình khác (ví dụ OPT 2.7B, Qwen2.5): sửa `JOBS` ở cell "Hàm chạy", giữ nguyên phần còn lại.
+- `gpt_neo_vanilla_opt_1_3b_phien1.ipynb`: bản đã chạy trên Kaggle ([phiên bản 1](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-vanilla-opt-1-3b?scriptVersionId=366470167)), kèm output và log. OPT 1.3B vanilla dừng ở 8.332 câu; chạy tiếp ở notebook Kaggle `cs221-popqa-opt-1-3b-2-7b` (cùng code, `JOBS` mới: OPT 1.3B vanilla và OPT 2.7B). Số liệu và thời gian: `results/RUNS.md`.
+
+## 11. Qwen2.5 0.5B/1.5B (bản base), vanilla và BM25 (phần mở rộng, issue #30)
+
+`qwen2_5_0_5b_1_5b.ipynb` là bản đã chạy trên Kaggle ([phiên bản 1](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-0-5b-1-5b?scriptVersionId=366477306)), kèm output và log. Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ.
+
+- Cùng notebook ở mục 10, khác ba chỗ: `JOBS` là bốn lượt Qwen; mã nguồn tác giả và PopQA tải từ GitHub (commit `8172ab0`, kiểm hash) thay vì dataset của nhóm; Qwen được cắt prompt ở 2048 token như OPT (dòng 10 của `docs/KHAC_BIET.md`).
+- Chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval` (công khai).
+- Qwen2.5-3B: cùng notebook, `JOBS` đổi thành 3B vanilla và 3B BM25 (cần 2 phiên).
