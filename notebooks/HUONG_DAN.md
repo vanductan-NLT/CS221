@@ -155,11 +155,12 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 
 ## 9. GPT-Neo 1.3B/2.7B, BM25 có đoạn văn trong ví dụ mẫu, đủ 14.267 câu
 
-`gpt_neo_bm25_shot_passages_phien1.ipynb` là bản tải từ Kaggle **kèm output và log** của phiên 1 ([phiên bản 4](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366304010)). Mở trên GitHub là đọc được log, không cần chạy lại.
+`gpt_neo_bm25_shot_passages_phien1.ipynb` là bản tải từ Kaggle **kèm output và log** của phiên 1 ([phiên bản 4](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366304010)). Mở trên GitHub là đọc được log, không cần chạy lại. Phiên 2 ở `gpt_neo_bm25_shot_passages_phien2.ipynb` ([phiên bản 5](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366459037)).
 
 - Chạy code gốc `run_model.py` (fp32), chỉ sửa chỗ tra đoạn văn cho 15 ví dụ mẫu, và đặt lại seed 633 trước khi chọn câu (dòng 9 của `docs/KHAC_BIET.md`).
 - Hai mô hình chạy song song, mỗi mô hình một GPU T4. Phiên tự dừng sau 11,4 giờ, lưu checkpoint; phiên sau chạy tiếp từ checkpoint.
-- Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu. Số liệu và thời gian: `results/RUNS.md`.
+- Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu.
+- Phiên 2: 2.7B chạy tiếp từ checkpoint, xong đủ 14.267 câu; 1.3B đã có CSV nên bỏ qua. Số liệu và thời gian: `results/RUNS.md`.
 
 ## 10. Vanilla GPT-Neo 1.3B/2.7B và OPT 1.3B (vanilla + BM25), có cột `conf`
 
