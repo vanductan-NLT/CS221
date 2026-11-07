@@ -152,3 +152,11 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 | `git clone` lỗi | Bật *Internet*; kiểm tra repo còn public và `REPO_REF` đúng tên nhánh |
 | `Không thấy file BM25 .jsonl` | *Add Input* dataset BM25, hoặc đặt `RET_PATH` thủ công |
 | `KẾT QUẢ KHÔNG KHỚP data/subset_300_ids.txt` | Xem cột `thieu`/`thua`. Thường do phiên bản thư viện đổi cách dùng bộ sinh số ngẫu nhiên; dán bảng kiểm vào issue #10 để xử lý, đừng dùng số đó |
+
+## 9. GPT-Neo 1.3B/2.7B, BM25 có đoạn văn trong ví dụ mẫu, đủ 14.267 câu
+
+`gpt_neo_bm25_shot_passages_phien1.ipynb` là bản tải từ Kaggle **kèm output và log** của phiên 1 ([phiên bản 4](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366304010)). Mở trên GitHub là đọc được log, không cần chạy lại.
+
+- Chạy code gốc `run_model.py` (fp32), chỉ sửa chỗ tra đoạn văn cho 15 ví dụ mẫu, và đặt lại seed 633 trước khi chọn câu (dòng 9 của `docs/KHAC_BIET.md`).
+- Hai mô hình chạy song song, mỗi mô hình một GPU T4. Phiên tự dừng sau 11,4 giờ, lưu checkpoint; phiên sau chạy tiếp từ checkpoint.
+- Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu. Số liệu và thời gian: `results/RUNS.md`.
