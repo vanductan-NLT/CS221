@@ -2,3 +2,4 @@ model,dtype,shots,n,vanilla,BM25,genread,adaptive,adaptive_std,frac_retrieval
 EleutherAI_gpt-neo-1.3B,fp32,15,300,,0.25666666666666665,,,,
 EleutherAI_gpt-neo-1.3B,fp32,15,14267,,0.21609308193733792,,,,
 EleutherAI_gpt-neo-2.7B,fp32,15,300,,0.2633333333333333,,,,
+EleutherAI_gpt-neo-2.7B,fp32,15,14267,,0.22751804864372327,,,,
