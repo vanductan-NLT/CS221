@@ -160,3 +160,13 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 - Chạy code gốc `run_model.py` (fp32), chỉ sửa chỗ tra đoạn văn cho 15 ví dụ mẫu, và đặt lại seed 633 trước khi chọn câu (dòng 9 của `docs/KHAC_BIET.md`).
 - Hai mô hình chạy song song, mỗi mô hình một GPU T4. Phiên tự dừng sau 11,4 giờ, lưu checkpoint; phiên sau chạy tiếp từ checkpoint.
 - Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu. Số liệu và thời gian: `results/RUNS.md`.
+
+## 10. Vanilla GPT-Neo 1.3B/2.7B và OPT 1.3B (vanilla + BM25), có cột `conf`
+
+`gpt_neo_vanilla_opt_1_3b.ipynb` (Kaggle: [cs221-popqa-gpt-neo-vanilla-opt-1-3b](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-vanilla-opt-1-3b)) là notebook ở mục 9, mở rộng thành nhiều lượt chạy:
+
+- Danh sách lượt ở biến `JOBS` (mô hình × cách × GPU). Mỗi GPU một hàng đợi, hai GPU chạy song song. Mặc định: GPU 0 chạy OPT 1.3B BM25; GPU 1 chạy lần lượt vanilla GPT-Neo 2.7B, GPT-Neo 1.3B, OPT 1.3B.
+- Cùng code gốc fp32, cùng seed 633 và cùng thứ tự câu với mục 9, nên vanilla và BM25 của một mô hình có cùng câu hỏi và cùng 15 ví dụ mẫu.
+- Thêm cột `conf` (issue #14, định nghĩa ở `results/README.md`). Đã thử trên CPU với GPT-Neo và OPT tí hon: câu trả lời giống hệt bản không có `conf`; chạy tiếp từ checkpoint cho cùng kết quả.
+- Trước khi chạy đủ, notebook chạy thử 300 câu cho mọi lượt, kiểm đúng 300 ID theo thứ tự và dựng lại từng prompt.
+- Muốn chạy mô hình khác (ví dụ OPT 2.7B, Qwen2.5): sửa `JOBS` ở cell "Hàm chạy", giữ nguyên phần còn lại.

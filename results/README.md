@@ -21,13 +21,14 @@ Bản đầy đủ (notebook ghi): `id, prop, prop_id, question, s_pop, pred, is
 
 Bản đầy đủ của code gốc có thêm `prompt`, `generation`, alias, link Wikidata… nên nặng hơn nhiều (khoảng 240 MB cho 14.267 câu), và không có cột `model, method, n_shots` (đã nằm trong tên file).
 
-Bản rút gọn: giữ `id, prop, prop_id, s_pop, pred, is_correct, has_answer, retrieval_id, model, method, n_shots` (cột nào file có), bỏ phần còn lại; cần thêm thông tin câu hỏi thì ghép với `upstream/data/popQA.tsv` theo `id`. Do `scripts/slim_results.py` sinh ra (issue #23), cùng tên với file đầy đủ:
+Bản rút gọn: giữ `id, prop, prop_id, s_pop, pred, is_correct, has_answer, retrieval_id, conf, model, method, n_shots` (cột nào file có), bỏ phần còn lại; cần thêm thông tin câu hỏi thì ghép với `upstream/data/popQA.tsv` theo `id`. Do `scripts/slim_results.py` sinh ra (issue #23), cùng tên với file đầy đủ:
 
 ```
 python scripts/slim_results.py            # mọi file trong results/raw/
 ```
 
 - `has_answer`: đoạn văn top-1 có chứa đáp án hay không (chỉ có ở BM25 và GenRead).
+- `conf` (issue #14): độ tự tin của câu trả lời = trung bình log-xác suất của các token tạo nên `pred` (dòng đầu của phần mô hình sinh ra, sau khi bỏ `\n\n` ở đầu như code gốc). Luôn ≤ 0; càng gần 0 càng tự tin. Để trống khi `pred` rỗng. Chỉ có ở các lượt chạy từ 07/11/2026 (`notebooks/gpt_neo_vanilla_opt_1_3b.ipynb`); bật `output_scores` không đổi prompt hay câu trả lời.
 
 ## Ghi lại mỗi lần chạy
 

@@ -11,7 +11,8 @@ văn bản mô hình sinh ra, alias, link Wikidata...) bị bỏ; cần thì gh�
   model/method/n_shots vì các thông tin này nằm trong tên file
 
 Cột giữ lại, theo thứ tự (cột nào file có): id, prop, prop_id, s_pop, pred, is_correct, has_answer,
-retrieval_id, model, method, n_shots. Thiếu một trong sáu cột đầu thì dừng và báo tên cột thiếu.
+retrieval_id, conf, model, method, n_shots. Thiếu một trong sáu cột đầu thì dừng và báo tên cột thiếu.
+`conf` (độ tự tin của câu trả lời, issue #14) chỉ có ở các lượt chạy từ 07/11/2026.
 Bản rút gọn quá 10 MB thì không ghi (luật repo, xem CLAUDE.md).
 
 Chạy trên CPU, vài giây mỗi file:
@@ -25,7 +26,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = ["id", "prop", "prop_id", "s_pop", "pred", "is_correct"]
-OPTIONAL = ["has_answer", "retrieval_id", "model", "method", "n_shots"]
+OPTIONAL = ["has_answer", "retrieval_id", "conf", "model", "method", "n_shots"]
 MAX_BYTES = 10 * 1024 * 1024
 
 
