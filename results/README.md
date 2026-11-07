@@ -13,11 +13,19 @@ Lý do tách: bản đầy đủ của nhiều mô hình × nhiều cách cộng
 
 Giữ nguyên tên notebook đặt: `{mô hình}__{dtype}__{cách}__shots{số shot}.csv`, ví dụ `EleutherAI_gpt-neo-1.3B__fp16__BM25__shots15.csv`. Đừng đổi tên tay, vì script gộp bảng đọc thông tin từ tên file.
 
+File do code gốc `run_model.py` ghi giữ tên của code gốc: `model={mô hình}-input={tên lượt chạy}-method={cách}-shots={số shot}-n={số câu}.csv`, ví dụ `model=EleutherAI_gpt-neo-1.3B-input=popqa-shot-passages-full-method=BM25-shots=15-n=14267.csv` (code gốc chạy fp32).
+
 ## Cột
 
 Bản đầy đủ (notebook ghi): `id, prop, prop_id, question, s_pop, pred, is_correct, has_answer, retrieval_id, passage, model, method, n_shots`.
 
-Bản rút gọn: bỏ `question` và `passage`, giữ phần còn lại. Do `scripts/slim_results.py` sinh ra (issue #23).
+Bản đầy đủ của code gốc có thêm `prompt`, `generation`, alias, link Wikidata… nên nặng hơn nhiều (khoảng 240 MB cho 14.267 câu), và không có cột `model, method, n_shots` (đã nằm trong tên file).
+
+Bản rút gọn: giữ `id, prop, prop_id, s_pop, pred, is_correct, has_answer, retrieval_id, model, method, n_shots` (cột nào file có), bỏ phần còn lại; cần thêm thông tin câu hỏi thì ghép với `upstream/data/popQA.tsv` theo `id`. Do `scripts/slim_results.py` sinh ra (issue #23), cùng tên với file đầy đủ:
+
+```
+python scripts/slim_results.py            # mọi file trong results/raw/
+```
 
 - `has_answer`: đoạn văn top-1 có chứa đáp án hay không (chỉ có ở BM25 và GenRead).
 

@@ -1,0 +1,301 @@
+id,prop,prop_id,s_pop,pred,is_correct,has_answer,retrieval_id
+5139062,mother,292,1326, Caroline Benn,True,False,2575832
+4638370,director,526,20800, Vaughan Grylls,False,False,3130626
+1353394,screenwriter,533,140, Jon Pertwee,False,False,393055
+5923312,author,484,62, John Stuart Mill,False,False,828117
+3356649,place of birth,218,33, Rabaul,True,False,1627397
+4996780,place of birth,218,455, Paris,False,False,430008
+743705,occupation,22,145, composer,False,False,1421210
+2357044,author,484,12770, Daniel O'Mahony,False,False,3053300
+4066277,country,182,736, United States,True,False,1243820
+1642428,occupation,22,369, Actor,False,False,2038646
+4188191,composer,639,3958, Dudley Simpson,False,False,1944639
+605897,genre,91,1742, new wave,False,False,3171785
+1473780,country,182,160, United States,False,True,697916
+1223424,capital of,97,122060, Austria,True,True,1337941
+5999251,capital,422,264, Bissau,False,False,327220
+5948044,author,484,557, Daniel O'Mahony,False,False,3053300
+780737,producer,164,16957, Salem Al Fakir,False,False,1650376
+6378269,director,526,4578, Peter Rogers,False,False,1944627
+994647,genre,91,2083, horror,False,False,3048265
+4409246,genre,91,289, Superhero,False,False,2195780
+4522741,screenwriter,533,13879, Jon Pertwee,False,False,393055
+837389,occupation,22,86, President of Santa Clara University,False,False,2724023
+2671483,composer,639,534, Dmitri Shostakovich,True,False,1206787
+3804084,author,484,1872, Daniel O'Mahony,False,False,3053300
+1872067,occupation,22,326, Author,False,False,2472006
+666610,genre,91,663, Racing,False,True,307869
+656905,composer,639,1736, Soltan Hajibeyov,False,False,3322894
+2250382,screenwriter,533,1108, Jean Marsan,False,False,1176501
+1791448,author,484,118, Wendy Priesnitz,False,False,3166950
+2485455,capital,422,3135, Saint-Pierre-d'Oléron,False,False,2627693
+6506411,father,257,143, Frederick Storrs-Turner,False,False,3327009
+5179731,author,484,89, Craig Hinton,True,False,2596756
+5789578,director,526,104, Terry Nation,False,False,3013638
+6365456,father,257,424, Iyasu I,True,False,3270852
+5422818,screenwriter,533,314, Alex Chandon,True,False,2738860
+2174102,genre,91,153, psychedelic rock,False,False,2503401
+5006891,capital,422,48, Saanen,True,False,2505259
+5781178,composer,639,403, Dudley Simpson,False,False,1944639
+2990323,genre,91,2172, new wave,False,False,3171785
+184846,producer,164,12813, John Nathan-Turner,False,False,2943893
+2556139,director,526,1883, Miguel Picazo,False,False,3038105
+5557556,genre,91,174, Trance,True,True,2816092
+4330249,mother,292,115, Lydia Molander,False,False,222809
+2507186,capital,422,233709, Turku,False,False,2176935
+946336,genre,91,500, novel,False,False,3018738
+2691112,author,484,262, Daniel O'Mahony,False,False,3053300
+2226731,genre,91,1248, rock,False,False,3171785
+3974408,producer,164,9, David Whitaker,False,False,2943893
+2449796,screenwriter,533,12896, David Lindsay-Abaire,False,False,1685177
+4921831,religion,106,3378, Roman Catholic,False,False,2448169
+1646720,producer,164,145, Mark Gatiss,False,False,2943893
+1342774,producer,164,840, Sophie Fante,False,False,2943893
+1481181,sport,560,260, football,True,True,1027026
+1977383,genre,91,5227, comedy,False,False,3178615
+3793259,father,257,130, Gilles Létourneau,False,False,2108018
+192261,producer,164,42852, Wild Things 3,False,False,416479
+2987359,director,526,75, Elizabeth Peters,False,False,3018904
+237759,producer,164,11808, Sophie Fante,False,False,2943893
+264374,country,182,81, United States,True,False,601021
+3720231,screenwriter,533,2008, Graham Greene,False,False,1829283
+1237178,director,526,176, Miguel Picazo,False,False,3038105
+2647530,screenwriter,533,2395, Roger Mudd,False,False,2846524
+4234132,genre,91,123, Rock,False,False,3171785
+2071152,genre,91,19003, Jazz,False,False,1169
+1306567,religion,106,3669, Christian,False,False,1720976
+1228958,screenwriter,533,1467, Jon Pertwee,False,False,393055
+1594184,producer,164,264, John Lloyd,False,False,2943893
+3826516,screenwriter,533,199, Sabina Guzzanti,True,False,1894150
+1194410,screenwriter,533,5327, Michael Crichton,False,False,349302
+5960486,producer,164,2230, John Duigan,False,False,2943893
+5560949,director,526,2230, John Ford,False,False,2932726
+4496891,screenwriter,533,21501, Terry Nation,False,False,393055
+1387057,director,526,96, Benjamin Christensen,False,False,3053484
+232809,place of birth,218,60, Paris,True,False,99942
+4997435,genre,91,18643, rock,False,False,3171785
+388189,author,484,773, Jules Renard,True,False,168576
+5580295,screenwriter,533,87064, Jon Pertwee,False,False,393055
+5982132,occupation,22,152, writer,False,False,1610367
+2105565,author,484,3122, Mary Elizabeth Braddon,True,False,2439430
+1969958,director,526,618, Maria Zimińska-Sygietyńska,False,False,924087
+3106384,place of birth,218,342, Hyderabad,False,False,1039076
+246959,screenwriter,533,1944, Jon Pertwee,False,False,393055
+2763878,capital,422,59881, Victoria,False,False,3346446
+5303917,director,526,1150, Gao Juefu,False,False,2083377
+3868066,father,257,51795, Steve Kerr,False,False,218564
+2281877,author,484,1601, Daniel O'Mahony,False,False,3053300
+4393083,director,526,148, Richard Martin,False,False,3013638
+2899611,director,526,84, Renato Pozzetto,False,False,1389778
+1574139,composer,639,766, Chris Michell,False,False,1831246
+4613808,author,484,769, S.N. Tripathi,False,False,1143549
+1804783,genre,91,13840, Alternative,False,False,909774
+1187163,genre,91,118, comedy,False,False,2319752
+3467441,author,484,3321, Nicholas Negroponte,True,False,1693475
+788195,producer,164,14830, Sophie Fante,False,False,2943893
+5839103,genre,91,1288, Crime,False,False,2976445
+3672517,country,182,60, Romania,True,True,1805498
+2068848,capital,422,48626, Pukapuka,False,False,1866857
+2194088,genre,91,3931, comedy,False,False,3032395
+1860470,director,526,572, Terry Nation,False,False,3013638
+1001346,author,484,53, Idries Shah,True,False,468586
+1225029,capital,422,57245, London,True,False,1199965
+776128,producer,164,996, John Dorney,False,False,2943893
+2654404,country,182,225, United Kingdom,False,True,2413566
+1391948,genre,91,21230, new wave,False,False,3171785
+3315030,screenwriter,533,5710, Souheil Ben-Barka,False,False,1024882
+1116447,director,526,510, Richard Martin,False,False,3013638
+3784290,sport,560,110, Formula Junior,False,False,1867396
+4331418,occupation,22,216, Harding University Graduate School of Religion,False,False,2158233
+1054401,genre,91,560, Alternative rock,False,False,713614
+5187250,father,257,118, Peter Wintonick,True,False,2601515
+2849306,genre,91,158, comedy,False,True,1367109
+3755811,director,526,202, Brian Hodgson,False,False,1944639
+832908,capital,422,816653, Ottawa,True,False,2677102
+1549444,country,182,2739, Pakistan,False,False,1131691
+1616396,capital,422,570, Yunguyo,False,False,842505
+1358512,genre,91,20989, new wave,False,False,3171785
+447830,country,182,4158, Japan,True,False,87748
+2254982,capital,422,156803, Chile Chico,False,False,1355690
+5918313,author,484,704, Daniel O'Mahony,False,False,3053300
+4666651,author,484,353, Lilian Jackson Braun,False,False,3023405
+596547,screenwriter,533,936, Raymond Bernard,False,False,247620
+1953459,genre,91,3283, bantamweight,False,False,1720131
+2647017,screenwriter,533,5130, John Milius,False,False,1742187
+1680080,country,182,63056, United Kingdom,False,False,1755452
+4684145,sport,560,343, chess,True,True,2332209
+3243026,religion,106,392, Roman Catholicism,False,False,1571963
+1316602,composer,639,504, Dudley Simpson,False,False,1944639
+5929687,author,484,104, Paul Scheerbart,True,False,3031758
+1001108,author,484,5727, Banjo Paterson,True,False,3038186
+935146,director,526,154, Terry Nation,False,False,3013638
+2908490,author,484,270, Stewart Brand,False,False,3333119
+5920784,producer,164,205, John Dorney,False,False,2943893
+2592338,screenwriter,533,1226, Satyajit Ray,False,False,2745282
+1486783,genre,91,321, Pre-University,False,False,1576193
+6281394,producer,164,2301, The Who,False,False,1603219
+4270058,country,182,10846, United States,True,False,2269032
+2073781,genre,91,8511, pop,True,False,1077410
+6004711,author,484,484, Daniel O'Mahony,False,False,3053300
+5918653,genre,91,388, new wave,False,False,3171785
+3956481,director,526,1333," Robert L. DuPont, M.D.",False,False,2836657
+2833871,screenwriter,533,3799, Dev Anand,True,False,1361408
+2435793,director,526,492, Mary Ann Doane,False,False,487405
+5945781,screenwriter,533,252, John Lloyd,False,False,2486307
+3423081,producer,164,13927, Sophie Fante,False,False,2943893
+4404592,producer,164,17980, Sophie Fante,False,False,2943893
+6547647,country,182,13083, United States,True,False,3087393
+5846736,mother,292,34405, Princess Maria von Habsburg,False,False,1284861
+5937854,producer,164,95, Mark Gatiss,False,False,2943893
+3950149,author,484,906, Daniel O'Mahony,False,False,3053300
+4763253,sport,560,197, American football,False,False,3129461
+3633815,composer,639,556, June Carroll,False,False,1183395
+288745,screenwriter,533,3509, Jon Pertwee,False,False,393055
+2059485,country,182,102, Serbia,True,False,1023148
+4652935,producer,164,2303, Jayam Manade Raa,False,False,2318901
+1932836,author,484,3119, Katherine Kurtz,False,False,1189404
+2630371,religion,106,22138, Judaism,True,False,840702
+2213921,director,526,729, Robert E. Allen,False,False,743076
+977275,director,526,1169, Rajasenan,True,False,455658
+2766419,author,484,1137, Ludovico Antonio Muratori,False,False,1421249
+636616,capital,422,724517, Beijing,True,False,768532
+144024,place of birth,218,947, Bitonto,True,False,61245
+2085939,screenwriter,533,1745, Gregg Araki,True,False,1034997
+1447840,screenwriter,533,422, Philippe Vartan Khazarian,False,False,426962
+1758617,director,526,654, Terry Nation,False,False,3013638
+3524273,screenwriter,533,762, Jon Pertwee,False,False,393055
+5915241,screenwriter,533,252, Mark Killeen,False,False,2551175
+37343,screenwriter,533,4160, Pete Townshend,False,False,2843673
+3677957,director,526,1335, Richard Martin,False,False,3013638
+2963470,father,257,326, Ealhmund,False,False,1421160
+3080610,director,526,452, John Cassavetes,False,False,105780
+5773632,director,526,1711, Stephen Woolley,False,False,493113
+2839162,capital,422,403188, Rome,True,False,309672
+1660687,country,182,1068, Indonesia,True,True,846368
+6502612,color,472,319409, red,True,True,749984
+1332334,country,182,45, Haiti,True,True,103024
+5962937,country,182,44, Czech Republic,True,True,3052085
+1571598,author,484,591, Mary Shelley,False,False,3023405
+3087676,genre,91,369, Rock,False,False,3171785
+5669872,producer,164,1280, Ryan Little,True,False,2481910
+4265255,occupation,22,139, actor,False,True,1048620
+2229505,genre,91,4342, electronic music,False,False,1099372
+5137613,composer,639,1408, Rosita Melo,False,False,2853271
+1913397,country,182,255, United States,True,False,2933300
+5592430,capital,422,151484, Georgetown,True,False,302249
+1074278,producer,164,67, Nicholas Briggs,False,False,2943893
+3763572,composer,639,2846, John Le Carré,False,False,1561921
+196395,religion,106,45, Roman Catholic,False,False,84352
+3276946,director,526,1090, Terry Nation,False,False,3013638
+5113116,director,526,4170, Günter Mast,False,False,3290637
+2374633,country,182,6794, Guyana,False,True,2140696
+1919697,screenwriter,533,3948, Ryan North,False,False,432368
+1107870,color,472,5035, Blue,False,False,2491658
+5045808,mother,292,43190, Aura Herzog,False,False,1087299
+6374945,capital of,97,113, Namentenga Province,True,False,3274478
+2663309,director,526,998, Dr. Luke,False,False,2273388
+2311628,author,484,178, Mark Twain,True,False,1137624
+5088311,religion,106,5861, Christian,False,False,2849646
+6042636,genre,91,229, nature,False,False,3095456
+614930,country,182,403, United States,True,False,276257
+432839,country,182,1164, Russia,True,True,189430
+3520627,director,526,931, Martin Grenville Moss,False,False,2556115
+1402351,sport,560,86, Football,True,True,726473
+843797,occupation,22,66, Astronomer,False,False,2728592
+75263,author,484,142, Carl Barks,True,False,1189930
+35,capital,422,61258, Libreville,True,False,1284408
+244122,director,526,28865, Terry Nation,False,False,3013638
+5777706,author,484,438, Patricia Highsmith,True,False,2935348
+474017,director,526,3930, John Huston,False,False,546046
+6532951,country,182,275, United States of America,True,False,3165053
+4532127,genre,91,2389, Country,False,False,566130
+3095296,director,526,531, Terry Nation,False,False,3013638
+2886182,screenwriter,533,127, Annette K. Olesen,False,False,725850
+1570230,genre,91,514, pop,False,False,545883
+3675616,screenwriter,533,199, Jon Pertwee,False,False,393055
+4310070,producer,164,1775, Sophie Fante,False,False,2943893
+701352,capital,422,258119, Santa Fe,True,False,2656395
+3450665,sport,560,746, Football,True,False,2969736
+186809,genre,91,52880, rock,False,False,3171785
+3903448,composer,639,148, Alex North,False,False,1280812
+3952467,country,182,48, Romania,True,True,1562355
+5041070,screenwriter,533,1711, Takeshi Kitano,True,False,2523592
+3514599,capital,422,10008, Cairo,True,False,420780
+6081120,genre,91,105, horror,False,False,497095
+3543733,screenwriter,533,456, Kenji Kamiyama,False,False,2864990
+3294045,capital of,97,5244, Osh,False,False,1019173
+5547893,genre,91,4579, Rock,False,False,688971
+4329831,genre,91,474, Hardcore techno,False,False,497022
+6533919,country,182,229, Netherlands,True,False,3337374
+5263647,country,182,292, Korea,False,False,1949706
+4801270,screenwriter,533,519, Satyajit Ray,True,False,2856354
+6385442,sport,560,29, football,True,True,3278985
+1162864,author,484,177, Emily Rodda,True,False,2854991
+4484472,country,182,79, Australia,True,True,2235410
+215156,country,182,36, Japan,True,False,92264
+1504171,occupation,22,190041, musician,False,True,1714760
+5951099,screenwriter,533,298, Eleanor Catton,False,False,3044750
+2223262,mother,292,1757, Eleanor of Normandy,False,False,1176606
+5644258,father,257,4842, Rod Stewart,True,False,2857955
+1855691,director,526,483, Richard Martin,False,False,3013638
+1035763,director,526,97, John Dorney,False,False,3029979
+2756925,screenwriter,533,156, Roald Dahl,False,False,393055
+1466602,screenwriter,533,765, Reed De Rouen,False,False,393055
+1868517,composer,639,6064, Dudley Simpson,False,False,1944639
+6161854,director,526,2171, John Cale,False,False,609088
+3422786,author,484,303, Jeff Evans,False,False,2321359
+4584501,screenwriter,533,686, Donald Tosh,False,False,1129503
+380223,screenwriter,533,6328, John le Carré,False,False,2526799
+3981349,place of birth,218,401, Brandon,False,False,1740865
+2664757,composer,639,355, William Schuman,False,False,979898
+5485882,composer,639,1319, Dudley Simpson,False,False,1944639
+3178175,author,484,2411, Daniel O'Mahony,False,False,3053300
+4405633,producer,164,1176, Sophie Fante,False,False,2943893
+1401285,producer,164,1043, Ajay Devgn,True,False,726021
+1349825,place of birth,218,127," Dhaka, Bangladesh",True,False,694724
+3183040,author,484,237, Daniel O'Mahony,False,False,3053300
+790430,place of birth,218,184, Dresden,True,False,369982
+3845086,director,526,10943, John P. Fulton,False,False,3096608
+1120961,genre,91,183, comedy,False,False,1611536
+1134562,screenwriter,533,69, Jon Pertwee,False,False,393055
+285213,director,526,284, Tetsuya Mizuguchi,False,False,1784955
+632979,sport,560,75, football,False,False,1849552
+353985,capital,422,1851, Stans,True,False,2403920
+285832,producer,164,1043, Sophie Fante,False,False,2943893
+1997293,producer,164,26876, Terrance Dicks,False,False,2943893
+201733,screenwriter,533,9797, John Ford,False,False,385312
+72369,genre,91,1916, comedy,False,False,1328360
+2897641,sport,560,75, football,True,True,1388911
+595358,producer,164,4891, David J. Schow,False,False,430070
+4968395,country,182,394, United States,False,True,3320304
+1001697,producer,164,32512, David Puttnam,False,False,606589
+1108230,composer,639,73, William A. Feilds,False,False,3179217
+902091,country,182,35, United States,True,False,416415
+5970015,author,484,446, Daniel O'Mahony,False,False,3053300
+144894,author,484,50, Maarten 't Hart,True,False,61664
+398909,composer,639,6570, Dudley Simpson,False,False,1944639
+2951170,occupation,22,994, singer,False,False,2582646
+3172905,producer,164,412, John Duigan,False,False,2943893
+3261768,religion,106,324, Zoroastrianism,False,False,840702
+5169150,place of birth,218,50, Stockholm,False,False,2592129
+500365,genre,91,5981, Platform game,True,True,224229
+5777300,genre,91,380230, R&B,True,True,3171785
+2114057,director,526,256, Terry Nation,False,False,3013638
+1117503,author,484,625, Steven Carroll,False,False,3019218
+617409,place of birth,218,59, Würzburg,False,False,3023952
+4365138,genre,91,665, Western,True,True,2175074
+394543,capital of,97,29196, Belgium,False,False,1016947
+691428,director,526,269, Gunnar Jordfald,False,False,2138448
+1722398,capital of,97,193323, Italy,True,False,863623
+5770014,screenwriter,533,17560, Jon Pertwee,False,False,393055
+6521985,religion,106,71, Roman Catholic,False,False,3332867
+1081675,country,182,22, Mexico,False,False,3147550
+2181196,producer,164,51577, Mark Gatiss,False,False,2943893
+5979071,screenwriter,533,2078, Reed De Rouen,False,False,393055
+4557797,place of birth,218,266," Powhatan County, Virginia",True,False,2352441
+2961443,genre,91,6174, comedy,False,True,1420243
+1717233,capital,422,170779, Sofia,True,False,1025794
+294568,country,182,205, Denmark,True,False,127116
+6001463,screenwriter,533,669, Jacob Bannon,False,False,3072763
+2379460,sport,560,103, hockey,False,True,1165734
+2245901,father,257,2551, Afonso III,False,False,1105564
