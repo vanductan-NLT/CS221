@@ -189,4 +189,5 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 
 - Dựa trên notebook ở mục 11 (mã nguồn tác giả và PopQA tải từ GitHub; chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval`). Điểm khác chính: `JOBS` là GPT-J 6B BM25 (GPU 0) và vanilla (GPU 1); GPT-J nạp ở fp16 (dòng 11 của `docs/KHAC_BIET.md`). Tên lượt có chữ `fp16`, nên `scripts/aggregate.py` ghi `dtype` là `fp16`.
 - Phiên 1 (08/11/2026): lượt thử 300 câu PASS; vanilla xong đủ 14.267 câu; BM25 dừng ở 12.351/14.267 câu (3,2 giây/câu). Số liệu và thời gian: `results/RUNS.md`.
-- Phiên sau: Add Input file `popqa-gptj-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
+- Phiên 2 (08/11/2026): `gpt_j_6b_fp16_phien2.ipynb` là bản đã chạy ([phiên 2](https://www.kaggle.com/code/danielndap/cs221-popqa-gpt-j-6b-fp16?scriptVersionId=366968306)), kèm output và log. Add Input output của phiên 1 (có `popqa-gptj-checkpoint.zip`), `TIME_BUDGET_HOURS = 3.0`. Notebook nhận checkpoint, bỏ qua hai lượt thử 300 câu và vanilla, chạy nốt 1.916 câu BM25 trong 1,9 giờ. Đủ 14.267 câu: vanilla 16,09%, BM25 24,43%, adaptive 25,56%.
+- Chạy tiếp một lượt dở: Add Input file `popqa-gptj-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
