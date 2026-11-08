@@ -191,3 +191,11 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 - Phiên 1 (08/11/2026): lượt thử 300 câu PASS; vanilla xong đủ 14.267 câu; BM25 dừng ở 12.351/14.267 câu (3,2 giây/câu). Số liệu và thời gian: `results/RUNS.md`.
 - Phiên 2 (08/11/2026): `gpt_j_6b_fp16_phien2.ipynb` là bản đã chạy ([phiên 2](https://www.kaggle.com/code/danielndap/cs221-popqa-gpt-j-6b-fp16?scriptVersionId=366968306)), kèm output và log. Add Input output của phiên 1 (có `popqa-gptj-checkpoint.zip`), `TIME_BUDGET_HOURS = 3.0`. Notebook nhận checkpoint, bỏ qua hai lượt thử 300 câu và vanilla, chạy nốt 1.916 câu BM25 trong 1,9 giờ. Đủ 14.267 câu: vanilla 16,09%, BM25 24,43%, adaptive 25,56%.
 - Chạy tiếp một lượt dở: Add Input file `popqa-gptj-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
+
+## 13. OPT 6.7B (fp16), vanilla và BM25 (issue #28)
+
+`opt_6_7b_fp16.ipynb` là notebook để import lên Kaggle (chưa chạy). Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ và cách chạy phiên 2.
+
+- Dựng từ notebook GPT-J ở mục 12, chỉ đổi: `JOBS` là `facebook/opt-6.7b` BM25 (GPU 0) và vanilla (GPU 1); nạp fp16 bằng `torch_dtype=torch.float16` (bản trên Hugging Face vốn lưu fp16, không cần nhánh riêng); thư mục làm việc và tên ZIP là `popqa-opt67b-*`. Cửa sổ 2048 token là sẵn của code gốc cho OPT. Tên lượt có chữ `fp16` như GPT-J.
+- Bộ nhớ GPU sát: trọng số 12,4 GiB cộng bộ nhớ đệm 2048 token khoảng 1 GiB, trên T4 14,6 GiB. Notebook đặt `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` cho tiến trình chạy mô hình (chỉ đổi cách cấp phát) và ghi kiểu attention vào log. Thiếu bộ nhớ thì lượt thử 300 câu báo lỗi trong khoảng 30 phút đầu.
+- Ước tính: BM25 khoảng 14 giờ, vanilla khoảng 7 giờ, chạy song song; cần 2 phiên, tổng khoảng 15 giờ GPU. Phiên 2: Add Input chính notebook này (output phiên 1 có `popqa-opt67b-checkpoint.zip`), như GPT-J phiên 2.
