@@ -172,6 +172,7 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 - Trước khi chạy đủ, notebook chạy thử 300 câu cho mọi lượt, kiểm đúng 300 ID theo thứ tự và dựng lại từng prompt.
 - Muốn chạy mô hình khác (ví dụ OPT 2.7B, Qwen2.5): sửa `JOBS` ở cell "Hàm chạy", giữ nguyên phần còn lại.
 - `gpt_neo_vanilla_opt_1_3b_phien1.ipynb`: bản đã chạy trên Kaggle ([phiên bản 1](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-vanilla-opt-1-3b?scriptVersionId=366470167)), kèm output và log. OPT 1.3B vanilla dừng ở 8.332 câu; chạy tiếp ở notebook Kaggle `cs221-popqa-opt-1-3b-2-7b` (cùng code, `JOBS` mới: OPT 1.3B vanilla và OPT 2.7B). Số liệu và thời gian: `results/RUNS.md`.
+- `opt_1_3b_2_7b_phien1.ipynb`: phiên tiếp theo ([phiên bản 1](https://www.kaggle.com/code/vanductan/cs221-popqa-opt-1-3b-2-7b?scriptVersionId=366647869)), kèm output và log: chạy nốt OPT 1.3B vanilla, chạy OPT 2.7B vanilla và 8.086 câu đầu của OPT 2.7B BM25. Chỉ khác notebook trên ở `JOBS` và giới hạn giờ, nên nhận checkpoint của phiên trước.
 
 ## 11. Qwen2.5 0.5B/1.5B (bản base), vanilla và BM25 (phần mở rộng, issue #30)
 
