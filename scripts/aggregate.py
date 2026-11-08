@@ -14,7 +14,8 @@ Chưa có đủ vanilla và BM25 của một nhóm thì ô adaptive để trốn
 
 Đọc được hai kiểu tên file (xem results/README.md):
 - notebook nhóm: `{mô hình}__{dtype}__{cách}__shots{số shot}.csv`
-- code gốc:      `model={mô hình}-input={tên lượt}-method={cách}-shots={số shot}-n={số câu}.csv` (fp32)
+- code gốc:      `model={mô hình}-input={tên lượt}-method={cách}-shots={số shot}-n={số câu}.csv`
+  (fp32; tên lượt có chữ `fp16`, ví dụ `popqa-fp16-full`, thì là fp16)
 
 Chạy trên CPU, vài giây:
     python scripts/aggregate.py
@@ -38,7 +39,9 @@ def parse_name(name):
     """Thông tin lấy từ tên file: model, dtype, method, shots (n đọc từ số dòng)."""
     m = UPSTREAM_NAME.match(name)
     if m:
-        return dict(model=m["model"], dtype="fp32", method=m["method"], shots=int(m["shots"]))
+        # Code gốc chạy fp32; lượt nạp fp16 (GPT-J 6B, issue #28) có chữ `fp16` trong tên lượt.
+        dtype = "fp16" if "fp16" in m["alias"].split("-") else "fp32"
+        return dict(model=m["model"], dtype=dtype, method=m["method"], shots=int(m["shots"]))
     m = NOTEBOOK_NAME.match(name)
     if m:
         return dict(model=m["model"], dtype=m["dtype"], method=m["method"], shots=int(m["shots"]))

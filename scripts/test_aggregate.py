@@ -70,4 +70,10 @@ assert np.isclose(full["adaptive"], reference(v, b)["hybrid_acc"])
 part = table[table.n == 300].iloc[0]
 assert part["dtype"] == "fp16" and np.isnan(part["adaptive"])
 print("2 ok: đọc cả hai kiểu tên file; adaptive chỉ có ở nhóm đủ vanilla và BM25")
+
+P = aggregate.parse_name
+assert P("model=EleutherAI_gpt-j-6b-input=popqa-shot-passages-fp16-full-method=BM25-shots=15-n=14267.csv")["dtype"] == "fp16"
+assert P("model=EleutherAI_gpt-j-6b-input=popqa-fp16-check300-method=vanilla-shots=15-n=300.csv")["dtype"] == "fp16"
+assert P("model=facebook_opt-2.7b-input=popqa-shot-passages-full-method=BM25-shots=15-n=14267.csv")["dtype"] == "fp32"
+print("3 ok: tên lượt có fp16 thì dtype là fp16, còn lại fp32")
 print("ALL OK")

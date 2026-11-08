@@ -13,7 +13,7 @@ Lý do tách: bản đầy đủ của nhiều mô hình × nhiều cách cộng
 
 Giữ nguyên tên notebook đặt: `{mô hình}__{dtype}__{cách}__shots{số shot}.csv`, ví dụ `EleutherAI_gpt-neo-1.3B__fp16__BM25__shots15.csv`. Đừng đổi tên tay, vì script gộp bảng đọc thông tin từ tên file.
 
-File do code gốc `run_model.py` ghi giữ tên của code gốc: `model={mô hình}-input={tên lượt chạy}-method={cách}-shots={số shot}-n={số câu}.csv`, ví dụ `model=EleutherAI_gpt-neo-1.3B-input=popqa-shot-passages-full-method=BM25-shots=15-n=14267.csv` (code gốc chạy fp32).
+File do code gốc `run_model.py` ghi giữ tên của code gốc: `model={mô hình}-input={tên lượt chạy}-method={cách}-shots={số shot}-n={số câu}.csv`, ví dụ `model=EleutherAI_gpt-neo-1.3B-input=popqa-shot-passages-full-method=BM25-shots=15-n=14267.csv` (code gốc chạy fp32). Lượt nạp mô hình ở fp16 (GPT-J 6B, issue #28) có chữ `fp16` trong tên lượt, ví dụ `input=popqa-shot-passages-fp16-full`; script gộp bảng đọc chữ này để ghi cột `dtype`.
 
 ## Cột
 
