@@ -181,4 +181,4 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 
 - Cùng notebook ở mục 10, khác ba chỗ: `JOBS` là bốn lượt Qwen; mã nguồn tác giả và PopQA tải từ GitHub (commit `8172ab0`, kiểm hash) thay vì dataset của nhóm; Qwen được cắt prompt ở 2048 token như OPT (dòng 10 của `docs/KHAC_BIET.md`).
 - Chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval` (công khai).
-- Qwen2.5-3B: cùng notebook, `JOBS` đổi thành 3B vanilla và 3B BM25 (cần 2 phiên).
+- Qwen2.5-3B: cùng notebook, `JOBS` đổi thành 3B BM25 (GPU 0) và 3B vanilla (GPU 1), chạy ở [cs221-popqa-qwen2-5-3b](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b). Vanilla xong trong phiên 1; BM25 cần 3 phiên (5,2–5,4 giây/câu). `qwen2_5_3b_phien2.ipynb` là phiên 2 ([phiên bản](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b?scriptVersionId=366806767)), kèm output và log: nhận checkpoint phiên 1, chạy BM25 từ câu 7.608 đến 12.978. Phiên sau: Add Input file `popqa-qwen-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
