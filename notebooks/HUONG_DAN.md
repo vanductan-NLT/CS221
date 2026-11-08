@@ -182,3 +182,11 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 - Cùng notebook ở mục 10, khác ba chỗ: `JOBS` là bốn lượt Qwen; mã nguồn tác giả và PopQA tải từ GitHub (commit `8172ab0`, kiểm hash) thay vì dataset của nhóm; Qwen được cắt prompt ở 2048 token như OPT (dòng 10 của `docs/KHAC_BIET.md`).
 - Chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval` (công khai).
 - Qwen2.5-3B: cùng notebook, `JOBS` đổi thành 3B BM25 (GPU 0) và 3B vanilla (GPU 1), chạy ở [cs221-popqa-qwen2-5-3b](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b). Vanilla xong trong phiên 1; BM25 cần 3 phiên (5,2–5,4 giây/câu). `qwen2_5_3b_phien2.ipynb` là phiên 2 ([phiên bản](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b?scriptVersionId=366806767)), kèm output và log: nhận checkpoint phiên 1, chạy BM25 từ câu 7.608 đến 12.978. Phiên sau: Add Input file `popqa-qwen-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
+
+## 12. GPT-J 6B (fp16), vanilla và BM25 (issue #28)
+
+`gpt_j_6b_fp16_phien1.ipynb` là bản đã chạy trên Kaggle ([cs221-popqa-gpt-j-6b-fp16, phiên 1](https://www.kaggle.com/code/danielndap/cs221-popqa-gpt-j-6b-fp16?scriptVersionId=366782943), tài khoản bạn Tân), kèm output và log. Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ.
+
+- Dựa trên notebook ở mục 11 (mã nguồn tác giả và PopQA tải từ GitHub; chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval`). Điểm khác chính: `JOBS` là GPT-J 6B BM25 (GPU 0) và vanilla (GPU 1); GPT-J nạp ở fp16 (dòng 11 của `docs/KHAC_BIET.md`). Tên lượt có chữ `fp16`, nên `scripts/aggregate.py` ghi `dtype` là `fp16`.
+- Phiên 1 (08/11/2026): lượt thử 300 câu PASS; vanilla xong đủ 14.267 câu; BM25 dừng ở 12.351/14.267 câu (3,2 giây/câu). Số liệu và thời gian: `results/RUNS.md`.
+- Phiên sau: Add Input file `popqa-gptj-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
