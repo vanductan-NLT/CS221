@@ -59,22 +59,33 @@ def read_run(path):
     return df
 
 
-def adaptive_eval(df_p, df_r, n_boot=100, split_proportion=0.75, seed=633, min_per_prop=8):
+def adaptive_eval(df_p, df_r, n_boot=100, split_proportion=0.75, seed=633, min_per_prop=8, score_col=None):
     """Adaptive retrieval như notebook tác giả: df_p = kết quả không tra cứu, df_r = có tra cứu.
 
-    Trả về dict(n, param_acc, ret_acc, hybrid_acc, hybrid_std, frac_retrieval), hoặc None nếu
-    không loại quan hệ nào có đủ `min_per_prop` câu.
+    `score_col`: cột số của df_p làm "điểm" để chia 10 bin; điểm càng cao càng dùng kết quả không tra cứu.
+    Mặc định (None) là log(s_pop), đúng như notebook tác giả. Truyền "conf" (độ tự tin, issue #34) thì
+    dùng giá trị thô, vì conf vốn đã là log-xác suất. Mọi thứ khác (chia 75/25, seed, số lần lặp)
+    giữ nguyên, nên hai cách điểm cho cùng các lần chia và so cặp được.
+
+    Trả về dict(n, param_acc, ret_acc, hybrid_acc, hybrid_std, frac_retrieval, hybrid_runs), trong đó
+    hybrid_runs là adaptive của từng lần chia; hoặc None nếu không loại quan hệ nào có đủ
+    `min_per_prop` câu.
     """
     if set(df_p["id"]) != set(df_r["id"]):
         raise ValueError("Hai bảng không cùng tập `id`; phải chạy trên cùng tập câu.")
-    m = df_p[["id", "prop", "s_pop", "is_correct"]].merge(
-        df_r[["id", "is_correct"]], on="id", suffixes=("_p", "_r"))
+    keep = list(dict.fromkeys(["id", "prop", "s_pop", "is_correct"] + ([score_col] if score_col else [])))
+    m = df_p[keep].merge(df_r[["id", "is_correct"]], on="id", suffixes=("_p", "_r"))
     m = m.sort_values("id").reset_index(drop=True)
     n = len(m)
     props = [p for p in m["prop"].unique() if (m["prop"] == p).sum() >= min_per_prop]
     if not props:
         return None
-    ser_all = np.log(m["s_pop"].values.astype(float))
+    if score_col is None:
+        ser_all = np.log(m["s_pop"].values.astype(float))
+    else:
+        ser_all = m[score_col].values.astype(float)
+        if not np.isfinite(ser_all).all():
+            raise ValueError(f"Cột {score_col} có giá trị thiếu hoặc vô hạn.")
     c_p_all = m["is_correct_p"].values.astype(bool)
     c_r_all = m["is_correct_r"].values.astype(bool)
     prop_idx = {p: np.where(m["prop"].values == p)[0] for p in props}
@@ -116,11 +127,11 @@ def adaptive_eval(df_p, df_r, n_boot=100, split_proportion=0.75, seed=633, min_p
     if not hyb:
         return None
     return dict(n=n, param_acc=np.mean(par), ret_acc=np.mean(ret), hybrid_acc=np.mean(hyb),
-                hybrid_std=np.std(hyb), frac_retrieval=np.mean(retn))
+                hybrid_std=np.std(hyb), frac_retrieval=np.mean(retn), hybrid_runs=np.array(hyb))
 
 
-def summarize(slim_dir):
-    """Một dòng cho mỗi (model, dtype, shots, n): độ chính xác từng cách và adaptive."""
+def load_groups(slim_dir):
+    """Đọc mọi file trong `slim_dir`, nhóm theo (model, dtype, shots, n): {cách chạy: bảng kết quả}."""
     groups = {}
     for path in sorted(Path(slim_dir).glob("*.csv")):
         info = parse_name(path.name)
@@ -133,7 +144,12 @@ def summarize(slim_dir):
         if info["method"] in group:
             raise SystemExit(f"Hai file cùng {key} và cùng cách {info['method']}: {path.name}")
         group[info["method"]] = df
+    return groups
 
+
+def summarize(slim_dir):
+    """Một dòng cho mỗi (model, dtype, shots, n): độ chính xác từng cách và adaptive."""
+    groups = load_groups(slim_dir)
     rows = []
     for (model, dtype, shots, n), runs in sorted(groups.items()):
         row = dict(model=model, dtype=dtype, shots=shots, n=n)

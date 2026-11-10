@@ -4,7 +4,7 @@
 |---|---|---|
 | `results/raw/` | File CSV notebook xuất ra, có cột `question` và `passage` (300 ký tự đầu của đoạn văn), vài MB mỗi lần chạy đủ 14.267 câu | Không |
 | `results/slim/` | Bản rút gọn, đủ để gộp bảng và phân tích | Có |
-| `results/tables/` | Bảng tổng hợp sinh từ `results/slim/`: `summary.csv` (độ chính xác từng cách, adaptive, tỉ lệ phải tra cứu) do `python scripts/aggregate.py` ghi (issue #24) | Có |
+| `results/tables/` | Bảng tổng hợp sinh từ `results/slim/`: `summary.csv` (độ chính xác từng cách, adaptive, tỉ lệ phải tra cứu) do `python scripts/aggregate.py` ghi (issue #24); `adaptive_by_confidence.csv` (adaptive theo độ tự tin so với theo độ nổi tiếng) và `adaptive_by_confidence_bins.csv` (tra cứu giúp hay hại theo 5 nhóm điểm) do `python scripts/adaptive_by_confidence.py` ghi (issue #34, đọc kết quả ở `docs/BANG_MO_RONG.md`) | Có |
 | `results/figs/` | Hình vẽ | Có |
 
 Lý do tách: bản đầy đủ của nhiều mô hình × nhiều cách cộng lại nặng, mà phân tích chỉ cần vài cột. Khi cần đọc đoạn văn để tìm ví dụ (phân tích 10%), mở bản trong `results/raw/`.
