@@ -9,6 +9,8 @@ File lớn không đưa lên git. Thư mục `data/raw/` đã nằm trong `.giti
 | Kết quả BM25 cho EntityQuestions | Cũng ở issue #5 của repo tác giả | Chỉ dùng nếu dư thời gian |
 | Contriever | Không còn | Tác giả xác nhận đã mất file. Không tái lập phần này |
 
+Cờ `hasanswer` trong file BM25 đánh giá thiếu: recall@1 chung theo cờ là 7,86%, tính lại bằng quy tắc chấm của đồ án là 25,54% (issue #29, `docs/BANG_TAI_LAP.md`). Cần recall@1 thì dùng cột `answer_in_passage` của `results/tables/bm25_top1_has_answer.csv`, dựng bằng `scripts/make_bm25_top1_table.py`; đừng dùng cột `has_answer` trong `results/slim/`.
+
 Tên dataset Kaggle có thể khác nếu tài khoản Kaggle khác `vanductan`. Tạo xong thì sửa lại dòng trên cho đúng.
 
 Đoạn văn lấy từ Wikipedia (giấy phép CC BY-SA).
