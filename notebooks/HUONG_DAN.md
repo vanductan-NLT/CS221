@@ -155,8 +155,48 @@ Danh sách những chỗ phải lách để không sửa `run_model.py` (cài `j
 
 ## 9. GPT-Neo 1.3B/2.7B, BM25 có đoạn văn trong ví dụ mẫu, đủ 14.267 câu
 
-`gpt_neo_bm25_shot_passages_phien1.ipynb` là bản tải từ Kaggle **kèm output và log** của phiên 1 ([phiên bản 4](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366304010)). Mở trên GitHub là đọc được log, không cần chạy lại.
+`gpt_neo_bm25_shot_passages_phien1.ipynb` là bản tải từ Kaggle **kèm output và log** của phiên 1 ([phiên bản 4](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366304010)). Mở trên GitHub là đọc được log, không cần chạy lại. Phiên 2 ở `gpt_neo_bm25_shot_passages_phien2.ipynb` ([phiên bản 5](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-bm25-shot-passages?scriptVersionId=366459037)).
 
 - Chạy code gốc `run_model.py` (fp32), chỉ sửa chỗ tra đoạn văn cho 15 ví dụ mẫu, và đặt lại seed 633 trước khi chọn câu (dòng 9 của `docs/KHAC_BIET.md`).
 - Hai mô hình chạy song song, mỗi mô hình một GPU T4. Phiên tự dừng sau 11,4 giờ, lưu checkpoint; phiên sau chạy tiếp từ checkpoint.
-- Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu. Số liệu và thời gian: `results/RUNS.md`.
+- Phiên 1: 1.3B xong đủ 14.267 câu; 2.7B dừng ở 8.029 câu.
+- Phiên 2: 2.7B chạy tiếp từ checkpoint, xong đủ 14.267 câu; 1.3B đã có CSV nên bỏ qua. Số liệu và thời gian: `results/RUNS.md`.
+
+## 10. Vanilla GPT-Neo 1.3B/2.7B và OPT 1.3B (vanilla + BM25), có cột `conf`
+
+`gpt_neo_vanilla_opt_1_3b.ipynb` (Kaggle: [cs221-popqa-gpt-neo-vanilla-opt-1-3b](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-vanilla-opt-1-3b)) là notebook ở mục 9, mở rộng thành nhiều lượt chạy:
+
+- Danh sách lượt ở biến `JOBS` (mô hình × cách × GPU). Mỗi GPU một hàng đợi, hai GPU chạy song song. Mặc định: GPU 0 chạy OPT 1.3B BM25; GPU 1 chạy lần lượt vanilla GPT-Neo 2.7B, GPT-Neo 1.3B, OPT 1.3B.
+- Cùng code gốc fp32, cùng seed 633 và cùng thứ tự câu với mục 9, nên vanilla và BM25 của một mô hình có cùng câu hỏi và cùng 15 ví dụ mẫu.
+- Thêm cột `conf` (issue #14, định nghĩa ở `results/README.md`). Đã thử trên CPU với GPT-Neo và OPT tí hon: câu trả lời giống hệt bản không có `conf`; chạy tiếp từ checkpoint cho cùng kết quả.
+- Trước khi chạy đủ, notebook chạy thử 300 câu cho mọi lượt, kiểm đúng 300 ID theo thứ tự và dựng lại từng prompt.
+- Muốn chạy mô hình khác (ví dụ OPT 2.7B, Qwen2.5): sửa `JOBS` ở cell "Hàm chạy", giữ nguyên phần còn lại.
+- `gpt_neo_vanilla_opt_1_3b_phien1.ipynb`: bản đã chạy trên Kaggle ([phiên bản 1](https://www.kaggle.com/code/vanductan/cs221-popqa-gpt-neo-vanilla-opt-1-3b?scriptVersionId=366470167)), kèm output và log. OPT 1.3B vanilla dừng ở 8.332 câu; chạy tiếp ở notebook Kaggle `cs221-popqa-opt-1-3b-2-7b` (cùng code, `JOBS` mới: OPT 1.3B vanilla và OPT 2.7B). Số liệu và thời gian: `results/RUNS.md`.
+- `opt_1_3b_2_7b_phien1.ipynb`: phiên tiếp theo ([phiên bản 1](https://www.kaggle.com/code/vanductan/cs221-popqa-opt-1-3b-2-7b?scriptVersionId=366647869)), kèm output và log: chạy nốt OPT 1.3B vanilla, chạy OPT 2.7B vanilla và 8.086 câu đầu của OPT 2.7B BM25. Chỉ khác notebook trên ở `JOBS` và giới hạn giờ, nên nhận checkpoint của phiên trước.
+- `opt_2_7b_bm25_chay_tiep.ipynb`: chạy nốt 6.181 câu còn lại của OPT 2.7B BM25 ([phiên bản 1](https://www.kaggle.com/code/danielndap/cs221-popqa-opt-2-7b-bm25-chay-tiep?scriptVersionId=366779792), tài khoản bạn Tân), kèm output và log. Chỉ khác `gpt_neo_vanilla_opt_1_3b.ipynb` ở `JOBS` và giới hạn giờ, nên nhận checkpoint của phiên trước.
+
+## 11. Qwen2.5 0.5B/1.5B (bản base), vanilla và BM25 (phần mở rộng, issue #30)
+
+`qwen2_5_0_5b_1_5b.ipynb` là bản đã chạy trên Kaggle ([phiên bản 1](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-0-5b-1-5b?scriptVersionId=366477306)), kèm output và log. Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ.
+
+- Cùng notebook ở mục 10, khác ba chỗ: `JOBS` là bốn lượt Qwen; mã nguồn tác giả và PopQA tải từ GitHub (commit `8172ab0`, kiểm hash) thay vì dataset của nhóm; Qwen được cắt prompt ở 2048 token như OPT (dòng 10 của `docs/KHAC_BIET.md`).
+- Chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval` (công khai).
+- Qwen2.5-3B: cùng notebook, `JOBS` đổi thành 3B BM25 (GPU 0) và 3B vanilla (GPU 1), chạy ở [cs221-popqa-qwen2-5-3b](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b). Vanilla xong trong phiên 1; BM25 cần 3 phiên (5,2–5,4 giây/câu). `qwen2_5_3b_phien2.ipynb` là phiên 2 ([phiên bản](https://www.kaggle.com/code/chanejlaforet/cs221-popqa-qwen2-5-3b?scriptVersionId=366806767)), kèm output và log: nhận checkpoint phiên 1, chạy BM25 từ câu 7.608 đến 12.978. Phiên sau: Add Input file `popqa-qwen-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
+
+## 12. GPT-J 6B (fp16), vanilla và BM25 (issue #28)
+
+`gpt_j_6b_fp16_phien1.ipynb` là bản đã chạy trên Kaggle ([cs221-popqa-gpt-j-6b-fp16, phiên 1](https://www.kaggle.com/code/danielndap/cs221-popqa-gpt-j-6b-fp16?scriptVersionId=366782943), tài khoản bạn Tân), kèm output và log. Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ.
+
+- Dựa trên notebook ở mục 11 (mã nguồn tác giả và PopQA tải từ GitHub; chỉ cần Add Input dataset `vanductan/popqa-bm25-retrieval`). Điểm khác chính: `JOBS` là GPT-J 6B BM25 (GPU 0) và vanilla (GPU 1); GPT-J nạp ở fp16 (dòng 11 của `docs/KHAC_BIET.md`). Tên lượt có chữ `fp16`, nên `scripts/aggregate.py` ghi `dtype` là `fp16`.
+- Phiên 1 (08/11/2026): lượt thử 300 câu PASS; vanilla xong đủ 14.267 câu; BM25 dừng ở 12.351/14.267 câu (3,2 giây/câu). Số liệu và thời gian: `results/RUNS.md`.
+- Phiên 2 (08/11/2026): `gpt_j_6b_fp16_phien2.ipynb` là bản đã chạy ([phiên 2](https://www.kaggle.com/code/danielndap/cs221-popqa-gpt-j-6b-fp16?scriptVersionId=366968306)), kèm output và log. Add Input output của phiên 1 (có `popqa-gptj-checkpoint.zip`), `TIME_BUDGET_HOURS = 3.0`. Notebook nhận checkpoint, bỏ qua hai lượt thử 300 câu và vanilla, chạy nốt 1.916 câu BM25 trong 1,9 giờ. Đủ 14.267 câu: vanilla 16,09%, BM25 24,43%, adaptive 25,56%.
+- Chạy tiếp một lượt dở: Add Input file `popqa-gptj-checkpoint.zip` của phiên trước, đặt `TIME_BUDGET_HOURS` nhỏ hơn quota còn lại khoảng 0,7 giờ, rồi chạy lại toàn bộ notebook.
+
+## 13. OPT 6.7B (fp16), vanilla và BM25 (issue #28)
+
+`opt_6_7b_fp16.ipynb` là notebook để import lên Kaggle (bản sạch, chưa có output); `opt_6_7b_fp16_phien1.ipynb` là bản đã chạy. Ô đầu notebook là hướng dẫn 4 bước cho người chạy nhờ và cách chạy phiên 2.
+
+- Dựng từ notebook GPT-J ở mục 12, chỉ đổi: `JOBS` là `facebook/opt-6.7b` BM25 (GPU 0) và vanilla (GPU 1); nạp fp16 bằng `torch_dtype=torch.float16` (bản trên Hugging Face vốn lưu fp16, không cần nhánh riêng); thư mục làm việc và tên ZIP là `popqa-opt67b-*`. Cửa sổ 2048 token là sẵn của code gốc cho OPT. Tên lượt có chữ `fp16` như GPT-J.
+- Bộ nhớ GPU sát: trọng số 12,4 GiB cộng bộ nhớ đệm 2048 token khoảng 1 GiB, trên T4 14,6 GiB. Notebook đặt `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` cho tiến trình chạy mô hình (chỉ đổi cách cấp phát) và ghi kiểu attention vào log. Thiếu bộ nhớ thì lượt thử 300 câu báo lỗi trong khoảng 30 phút đầu.
+- Phiên 1 (09/11/2026): `opt_6_7b_fp16_phien1.ipynb` là bản đã chạy ([opt-6-7b-fp16, phiên 1](https://www.kaggle.com/code/danielndap/opt-6-7b-fp16?scriptVersionId=367100354), tài khoản bạn Tân), kèm output và log. Lượt thử 300 câu PASS, không thiếu bộ nhớ (fp16, attention SDPA). Cả hai lượt xong đủ 14.267 câu trong một phiên 11,0 giờ, nhanh hơn ước tính 2 phiên: BM25 2,7 giây/câu, vanilla 2,5 giây/câu. Đủ 14.267 câu: vanilla 15,66%, BM25 24,62%, adaptive 25,79%. Số liệu và thời gian: `results/RUNS.md`.
+- Chạy lại mà một phiên không đủ: Add Input chính notebook này (output phiên trước có `popqa-opt67b-checkpoint.zip`), như GPT-J phiên 2.
