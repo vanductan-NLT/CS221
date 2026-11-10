@@ -1,0 +1,21 @@
+id,prop,question,gold_first,bm25_pred,vanilla_correct,whole_word,auto_cause,manual_cause
+3337761,author,Who is the author of Ang Singsing ng Dalagang Marmol?,Isabelo de los Reyes,Isabelo Florentino de los Reyes,False,True,near_miss,right_in_meaning
+2849350,genre,What genre is Just Dance 4?,music video game,Dance,False,True,other_candidate,wrong_pick
+3381798,country,In what country is Arthur?,United States of America,England,False,True,ignored_passage,fake_answer
+2576512,producer,Who was the producer of Pin Up Girl?,20th Century Studios,William LeBaron,False,True,other_candidate,narrow_gold
+4582156,father,Who is the father of Stephen of England?,Stephen,Paul McGann,True,True,other_candidate,fake_answer
+4830188,screenwriter,Who was the screenwriter for Keep Fit?,Anthony Kimmins,John Boulting,False,True,ignored_passage,ignored
+144090,genre,What genre is City Slickers?,comedy film,comedy,False,True,near_miss,right_in_meaning
+3237038,genre,What genre is Afsporet?,film noir,Psychological thriller,False,True,ignored_passage,narrow_gold
+505960,genre,What genre is Kei Yasuda?,J-pop,pop,False,True,near_miss,right_in_meaning
+1188844,capital of,What is Hanover the capital of?,Lower Saxony,Germany,False,True,other_candidate,wrong_pick
+1830760,father,"Who is the father of Princess Mary, Duchess of Gloucester and Edinburgh?",George III of Great Britain,"Prince William Frederick, Duke of Gloucester and Edinburgh",False,True,other_candidate,wrong_pick
+4097458,genre,What genre is Frans Floris I?,Northern Renaissance,history painting,False,True,other_candidate,narrow_gold
+3205878,genre,What genre is Abandon?,Christian rock,Rock,False,True,near_miss,right_in_meaning
+308097,genre,What genre is A Painted House?,legal thriller,historical fiction,False,True,ignored_passage,fake_answer
+1303963,director,Who was the director of Maine Pyar Kiya?,Sooraj R. Barjatya,Sooraj Barjatya,False,True,near_miss,right_in_meaning
+4272302,religion,What is the religion of Spring Hill College?,Catholic Church,Methodist,False,True,other_candidate,fake_answer
+900521,occupation,What is Marco Ameglio's occupation?,politician,music critic,False,False,substring_only,fake_answer
+3521531,genre,What genre is Blackbirds at Bangpleng?,horror film,Science fiction horror,False,True,other_candidate,right_in_meaning
+6370830,capital,What is the capital of Orotina Canton?,Orotina,San José,True,True,ignored_passage,ignored
+6092302,genre,What genre is Value for Money?,comedy film,comedy,False,True,near_miss,right_in_meaning
