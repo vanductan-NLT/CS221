@@ -29,20 +29,29 @@ def answer_in_text(text, answers):
     return any(a in text or a.lower() in text or a.capitalize() in text for a in answers)
 
 
-def build(popqa_path, bm25_path):
-    popqa = pd.read_csv(popqa_path, sep="\t")
+def top1_passages(popqa, bm25_path):
+    """{id câu hỏi: đoạn BM25 top-1 (dict có id, text, hasanswer)}, tra bằng nguyên văn câu hỏi như các lượt chạy."""
     retrieval = {}
     with Path(bm25_path).open(encoding="utf-8") as f:
         for line in f:
             if line.strip():
                 record = json.loads(line)
                 retrieval[record["question"]] = record
-    rows = []
+    passages = {}
     for r in popqa.itertuples(index=False):
         ctxs = retrieval.get(r.question, {}).get("ctxs")
         if not ctxs or not ctxs[0].get("text", "").strip():
             raise SystemExit(f"Thiếu đoạn BM25 cho câu id={r.id}: {r.question}")
-        top1 = ctxs[0]
+        passages[r.id] = ctxs[0]
+    return passages
+
+
+def build(popqa_path, bm25_path):
+    popqa = pd.read_csv(popqa_path, sep="\t")
+    passages = top1_passages(popqa, bm25_path)
+    rows = []
+    for r in popqa.itertuples(index=False):
+        top1 = passages[r.id]
         rows.append(dict(id=r.id, retrieval_id=top1["id"], hasanswer_flag=bool(top1["hasanswer"]),
                          answer_in_passage=answer_in_text(top1["text"], json.loads(r.possible_answers))))
     return pd.DataFrame(rows)

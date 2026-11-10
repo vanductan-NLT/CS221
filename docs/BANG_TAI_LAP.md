@@ -66,6 +66,7 @@ File BM25 của tác giả có cờ `hasanswer` cho từng đoạn, và cột `h
 ### Giới hạn
 
 - Chỉ đoạn top-1 (như paper và code gốc). Đáp án có thể nằm ở đoạn thứ 2 đến thứ 5 mà không tính.
+- recall@1 dùng so khớp chuỗi con như cách chấm `is_correct`, nên có dương tính giả với đáp án ngắn (ví dụ đáp án "red" nằm trong chữ "retired", "US" nằm trong "multi-use", xem `docs/PHAN_TICH.md` mục 3); số recall@1 vì vậy hơi cao.
 - recall@1 chỉ cho biết đáp án có nằm trong đoạn, không cho biết đoạn có nói về đúng thực thể. Khi hai người trùng tên, đoạn có thể chứa đáp án của người khác (xem PopQA có 881 câu hỏi trùng văn bản).
 - Ô "hại" chỉ có 2,3% đến 4,5% số câu (khoảng 330 đến 640 câu mỗi mô hình), nên recall@1 của ô này dao động nhiều hơn các ô lớn.
 - Bảng 2×2 gộp mọi loại quan hệ và mọi mức nổi tiếng; chia theo nổi tiếng và theo loại quan hệ là việc của #25, #36.
