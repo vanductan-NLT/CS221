@@ -79,6 +79,22 @@ EleutherAI_gpt-neo-1.3B,fp32,300,vanilla,producer,28,0.0,0.0
 EleutherAI_gpt-neo-1.3B,fp32,300,vanilla,religion,8,0.125,0.125
 EleutherAI_gpt-neo-1.3B,fp32,300,vanilla,screenwriter,41,0.0,0.0
 EleutherAI_gpt-neo-1.3B,fp32,300,vanilla,sport,10,0.4,0.4
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,author,33,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,capital,18,0.7777777777777778,0.7777777777777778
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,capital of,5,0.4,0.4
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,color,2,0.5,0.5
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,composer,15,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,country,28,0.5357142857142857,0.4642857142857143
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,director,38,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,father,8,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,genre,40,0.025,0.025
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,mother,5,0.2,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,occupation,10,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,place of birth,11,0.09090909090909091,0.09090909090909091
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,producer,28,0.0,0.0
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,religion,8,0.125,0.125
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,screenwriter,41,0.024390243902439025,0.024390243902439025
+EleutherAI_gpt-neo-1.3B,fp32,300,genread,sport,10,0.5,0.5
 EleutherAI_gpt-neo-1.3B,fp32,300,BM25,author,33,0.36363636363636365,0.36363636363636365
 EleutherAI_gpt-neo-1.3B,fp32,300,BM25,capital,18,0.6111111111111112,0.6111111111111112
 EleutherAI_gpt-neo-1.3B,fp32,300,BM25,capital of,5,0.4,0.4
@@ -111,6 +127,22 @@ EleutherAI_gpt-neo-1.3B,fp32,14267,vanilla,producer,1520,0.007236842105263158,0.
 EleutherAI_gpt-neo-1.3B,fp32,14267,vanilla,religion,338,0.11538461538461539,0.10946745562130178
 EleutherAI_gpt-neo-1.3B,fp32,14267,vanilla,screenwriter,1999,0.013506753376688344,0.013506753376688344
 EleutherAI_gpt-neo-1.3B,fp32,14267,vanilla,sport,547,0.5557586837294333,0.546617915904936
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,author,1514,0.019815059445178335,0.018494055482166448
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,capital,645,0.5286821705426357,0.5162790697674419
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,capital of,363,0.3443526170798898,0.3443526170798898
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,color,34,0.6764705882352942,0.6764705882352942
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,composer,978,0.009202453987730062,0.009202453987730062
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,country,838,0.5310262529832935,0.513126491646778
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,director,1999,0.005502751375687844,0.005502751375687844
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,father,570,0.08421052631578947,0.054385964912280704
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,genre,1619,0.054354539839407044,0.051266213712168
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,mother,187,0.0427807486631016,0.0374331550802139
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,occupation,532,0.09774436090225563,0.09586466165413533
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,place of birth,584,0.08904109589041095,0.08561643835616438
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,producer,1520,0.007894736842105263,0.007894736842105263
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,religion,338,0.15680473372781065,0.15384615384615385
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,screenwriter,1999,0.01250625312656328,0.01250625312656328
+EleutherAI_gpt-neo-1.3B,fp32,14267,genread,sport,547,0.6215722120658135,0.6160877513711152
 EleutherAI_gpt-neo-1.3B,fp32,14267,BM25,author,1514,0.17965653896961692,0.178335535006605
 EleutherAI_gpt-neo-1.3B,fp32,14267,BM25,capital,645,0.5984496124031008,0.5953488372093023
 EleutherAI_gpt-neo-1.3B,fp32,14267,BM25,capital of,363,0.39944903581267216,0.3939393939393939
@@ -399,6 +431,22 @@ facebook_opt-1.3b,fp32,300,vanilla,producer,28,0.0,0.0
 facebook_opt-1.3b,fp32,300,vanilla,religion,8,0.125,0.125
 facebook_opt-1.3b,fp32,300,vanilla,screenwriter,41,0.024390243902439025,0.024390243902439025
 facebook_opt-1.3b,fp32,300,vanilla,sport,10,0.4,0.4
+facebook_opt-1.3b,fp32,300,genread,author,33,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,capital,18,0.7777777777777778,0.7777777777777778
+facebook_opt-1.3b,fp32,300,genread,capital of,5,0.4,0.4
+facebook_opt-1.3b,fp32,300,genread,color,2,0.5,0.5
+facebook_opt-1.3b,fp32,300,genread,composer,15,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,country,28,0.39285714285714285,0.32142857142857145
+facebook_opt-1.3b,fp32,300,genread,director,38,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,father,8,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,genre,40,0.05,0.05
+facebook_opt-1.3b,fp32,300,genread,mother,5,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,occupation,10,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,place of birth,11,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,producer,28,0.0,0.0
+facebook_opt-1.3b,fp32,300,genread,religion,8,0.125,0.125
+facebook_opt-1.3b,fp32,300,genread,screenwriter,41,0.024390243902439025,0.024390243902439025
+facebook_opt-1.3b,fp32,300,genread,sport,10,0.4,0.4
 facebook_opt-1.3b,fp32,300,BM25,author,33,0.36363636363636365,0.36363636363636365
 facebook_opt-1.3b,fp32,300,BM25,capital,18,0.7222222222222222,0.7222222222222222
 facebook_opt-1.3b,fp32,300,BM25,capital of,5,0.4,0.4
@@ -431,6 +479,22 @@ facebook_opt-1.3b,fp32,14267,vanilla,producer,1520,0.011842105263157895,0.011842
 facebook_opt-1.3b,fp32,14267,vanilla,religion,338,0.1390532544378698,0.1390532544378698
 facebook_opt-1.3b,fp32,14267,vanilla,screenwriter,1999,0.02001000500250125,0.02001000500250125
 facebook_opt-1.3b,fp32,14267,vanilla,sport,547,0.6179159049360147,0.6160877513711152
+facebook_opt-1.3b,fp32,14267,genread,author,1514,0.02774108322324967,0.02774108322324967
+facebook_opt-1.3b,fp32,14267,genread,capital,645,0.5395348837209303,0.537984496124031
+facebook_opt-1.3b,fp32,14267,genread,capital of,363,0.3608815426997245,0.3581267217630854
+facebook_opt-1.3b,fp32,14267,genread,color,34,0.6176470588235294,0.5882352941176471
+facebook_opt-1.3b,fp32,14267,genread,composer,978,0.026584867075664622,0.024539877300613498
+facebook_opt-1.3b,fp32,14267,genread,country,838,0.4880668257756563,0.4701670644391408
+facebook_opt-1.3b,fp32,14267,genread,director,1999,0.013006503251625813,0.013006503251625813
+facebook_opt-1.3b,fp32,14267,genread,father,570,0.07719298245614035,0.05263157894736842
+facebook_opt-1.3b,fp32,14267,genread,genre,1619,0.05188387893761581,0.05250154416306362
+facebook_opt-1.3b,fp32,14267,genread,mother,187,0.03208556149732621,0.03208556149732621
+facebook_opt-1.3b,fp32,14267,genread,occupation,532,0.16353383458646617,0.15977443609022557
+facebook_opt-1.3b,fp32,14267,genread,place of birth,584,0.11643835616438356,0.1113013698630137
+facebook_opt-1.3b,fp32,14267,genread,producer,1520,0.01381578947368421,0.01381578947368421
+facebook_opt-1.3b,fp32,14267,genread,religion,338,0.13313609467455623,0.1301775147928994
+facebook_opt-1.3b,fp32,14267,genread,screenwriter,1999,0.021010505252626314,0.021010505252626314
+facebook_opt-1.3b,fp32,14267,genread,sport,547,0.6325411334552102,0.6307129798903108
 facebook_opt-1.3b,fp32,14267,BM25,author,1514,0.19220607661822986,0.19154557463672392
 facebook_opt-1.3b,fp32,14267,BM25,capital,645,0.641860465116279,0.641860465116279
 facebook_opt-1.3b,fp32,14267,BM25,capital of,363,0.41046831955922863,0.36639118457300274

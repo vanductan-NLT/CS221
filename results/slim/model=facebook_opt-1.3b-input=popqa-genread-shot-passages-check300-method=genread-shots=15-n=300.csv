@@ -1,301 +1,301 @@
-id,prop,prop_id,s_pop,pred,is_correct,has_answer,conf
-5139062,mother,292,1326, Melissa Benn,False,False,-0.9075208678841592
-4638370,director,526,20800, John Huston,False,False,-1.6864515370786346
-1353394,screenwriter,533,140, John Madden,False,False,-2.827552437782288
-5923312,author,484,62, Adam Smith,False,False,-0.7957877155859023
-3356649,place of birth,218,33, Rome,False,False,-1.959051489830017
-4996780,place of birth,218,455, Paris,False,False,-1.3462129831314087
-743705,occupation,22,145, Teacher,False,False,-3.8325366973876953
-2357044,author,484,12770, John Updike,False,False,-1.1942943101057608
-4066277,country,182,736, United States,True,False,-0.3552709412761032
-1642428,occupation,22,369, Actor,False,False,-3.396007537841797
-4188191,composer,639,3958, John Barry,False,False,-1.4462207555770874
-605897,genre,91,1742, drama,False,False,-2.2402045726776123
-1473780,country,182,160, United States,False,False,-0.9737767577171326
-1223424,capital of,97,122060, Austria,True,False,-0.1816246807575225
-5999251,capital,422,264, Côte d'Ivoire,False,False,-0.6194995674122765
-5948044,author,484,557, Stephen King,False,False,-2.206600069999695
-780737,producer,164,16957, James Franco,False,False,-2.328102648258209
-6378269,director,526,4578, Peter Cook,False,False,-2.307339191436768
-994647,genre,91,2083, science fiction,False,False,-0.4305427237413823
-4409246,genre,91,289, drama,False,False,-2.353276014328003
-4522741,screenwriter,533,13879, Ben Stiller,False,False,-1.9824073296040297
-837389,occupation,22,86, Professor,False,False,-3.617645740509033
-2671483,composer,639,534, John Barry,False,False,-1.9652318954467771
-3804084,author,484,1872, John Crowley,False,False,-2.73549747467041
-1872067,occupation,22,326, teacher,False,False,-3.8135039806365967
-666610,genre,91,663, a game,False,False,-2.7129995822906494
-656905,composer,639,1736, Hans Zimmer,False,False,-1.4606276154518127
-2250382,screenwriter,533,1108, John Pemberton,False,False,-0.9034125412945286
-1791448,author,484,118, John Irving,False,False,-2.7594165802001958
-2485455,capital,422,3135, Marseille,False,False,-0.7279885113239288
-6506411,father,257,143, Alfred Jefferis Turner,False,False,-0.3642911409959197
-5179731,author,484,89, John Green,False,False,-3.011568784713745
-5789578,director,526,104, Michael Winterbottom,False,False,-1.5877914757778246
-6365456,father,257,424, Dawit II,False,False,-1.1066260849280904
-5422818,screenwriter,533,314, John Pemberton,False,False,-1.856416433060076
-2174102,genre,91,153, drama,False,False,-1.6509753465652466
-5006891,capital,422,48, Saanen,True,False,-0.1871618771304687
-5781178,composer,639,403, John Williams,False,False,-2.188868999481201
-2990323,genre,91,2172, mystery,False,False,-1.1597445011138916
-184846,producer,164,12813, Michael Winterbottom,False,False,-1.6011342080309987
-2556139,director,526,1883, John Frankenheimer,False,False,-0.0958616570618081
-5557556,genre,91,174, comedy,False,False,-1.908795952796936
-4330249,mother,292,115, Anna Molander,False,False,-1.5162990963241707
-2507186,capital,422,233709, Helsinki,True,False,-0.0604024454951286
-946336,genre,91,500, mystery,False,False,-1.2645233869552612
-2691112,author,484,262, John Pemberton,False,False,-1.4173497522278922
-2226731,genre,91,1248, mystery,False,False,-2.16410493850708
-3974408,producer,164,9, David Heyman,False,False,-1.5144824689875047
-2449796,screenwriter,533,12896, Jeph Loeb,False,False,-0.91166724220966
-4921831,religion,106,3378, Roman Catholic,False,False,-0.8300375789403915
-1646720,producer,164,145, David Fincher,False,False,-1.6149242066894658
-1342774,producer,164,840, Michael De Luca,False,False,-1.5150047502247617
-1481181,sport,560,260, football,True,False,-0.7481650114059448
-1977383,genre,91,5227, drama,False,False,-1.7878283262252808
-3793259,father,257,130, Charles de Gaulle,False,False,-1.3956096736801555
-192261,producer,164,42852, John Waters,False,False,-2.695661425590515
-2987359,director,526,75, John Pemberton,False,False,-1.487650425187894
-237759,producer,164,11808, John Ford,False,False,-1.021910883486271
-264374,country,182,81, Pennsylvania,False,False,-1.0468353033065796
-3720231,screenwriter,533,2008, John Buchan,False,False,-1.8181645466635623
-1237178,director,526,176, John Huston,False,False,-1.4984399977644596
-2647530,screenwriter,533,2395, John Mudd,False,False,-2.1012330055236816
-4234132,genre,91,123, comedy,False,False,-1.484389066696167
-2071152,genre,91,19003, Jazz,False,False,-1.1799918413162231
-1306567,religion,106,3669, Christian,False,False,-1.4319932460784912
-1228958,screenwriter,533,1467, John Pemberton,False,False,-1.293987582772388
-1594184,producer,164,264, David Zucker,False,False,-3.2208034992218018
-3826516,screenwriter,533,199, David Koepp,False,False,-1.6455832840874791
-1194410,screenwriter,533,5327, John Frankenheimer,False,False,-0.1235518651131618
-5960486,producer,164,2230, Karl Tunberg,False,False,-0.8356978397544784
-5560949,director,526,2230, Margaret Atwood,False,False,-0.8575180341867963
-4496891,screenwriter,533,21501, Ben Winston,False,False,-2.6399147510528564
-1387057,director,526,96, John Huston,False,False,-1.6638245727905694
-232809,place of birth,218,60, Madrid,False,False,-1.995217084884644
-4997435,genre,91,18643, drama,False,False,-1.334728479385376
-388189,author,484,773, Jean-Paul Sartre,False,False,-0.8569426574006987
-5580295,screenwriter,533,87064, David Gordon Green,False,False,-1.1759714592869084
-5982132,occupation,22,152, Actor,False,False,-2.7857840061187744
-2105565,author,484,3122, Jane Austen,False,False,-1.0795521246594335
-1969958,director,526,618, John Pemberton,False,False,-0.8303474453350645
-3106384,place of birth,218,342, London,False,False,-1.906238317489624
-246959,screenwriter,533,1944, David Koepp,False,False,-1.3152864733710885
-2763878,capital,422,59881, Melbourne,True,False,-1.0388330221176147
-5303917,director,526,1150, Ken Russell,False,False,-0.9659413818735628
-3868066,father,257,51795, Steve Kerr,False,False,-1.6115237586200235
-2281877,author,484,1601, Leonardo da Vinci,False,False,-0.7477155830274569
-4393083,director,526,148, John Pemberton,False,False,-0.5978596880740952
-2899611,director,526,84, Federico Fellini,False,False,-0.687045938859228
-1574139,composer,639,766, John Cage,False,False,-2.2304375171661377
-4613808,author,484,769, J.M. Coetzee,False,False,-0.9682250821954638
-1804783,genre,91,13840, pop,True,False,-1.2194422483444214
-1187163,genre,91,118, drama,False,False,-2.130822896957397
-3467441,author,484,3321, David Foster Wallace,False,False,-1.4065944117804368
-788195,producer,164,14830, Michael Winterbottom,False,False,-1.70137395337224
-5839103,genre,91,1288, Drama,False,False,-1.5470924377441406
-3672517,country,182,60, India,False,False,-1.1989128589630127
-2068848,capital,422,48626, Honiara,False,False,-0.7799015719986832
-2194088,genre,91,3931, romantic comedy,True,True,-0.4665258834138512
-1860470,director,526,572, Michael Mann,False,False,-1.6158406138420105
-1001346,author,484,53, Rumi,False,False,-2.050083100795746
-1225029,capital,422,57245, London,True,False,-0.2292697429656982
-776128,producer,164,996, Lalo Schifrin,False,False,-0.8960934397502569
-2654404,country,182,225, England,False,False,-2.1569361686706543
-1391948,genre,91,21230, mystery,False,False,-2.3718130588531494
-3315030,screenwriter,533,5710, John Pemberton,False,False,-1.313367343180289
-1116447,director,526,510, David Lynch,False,False,-2.243933916091919
-3784290,sport,560,110, Football,False,False,-1.4003254175186155
-4331418,occupation,22,216, Teacher,False,False,-3.632246494293213
-1054401,genre,91,560, mystery,False,False,-1.2193851470947266
-5187250,father,257,118, John Burt-Wintonick,False,False,-0.6936456771966603
-2849306,genre,91,158, mystery,False,False,-2.26790452003479
-3755811,director,526,202, John Huston,False,False,-1.4790429841571795
-832908,capital,422,816653, Ottawa,True,False,-1.2658326625823977
-1549444,country,182,2739, United States,True,False,-1.3564750254154203
-1616396,capital,422,570, Puno,True,False,-0.8608792326413095
-1358512,genre,91,20989, science fiction,False,False,-1.119685646146536
-447830,country,182,4158, Japan,True,False,-0.0893267765641212
-2254982,capital,422,156803, Santiago,True,False,-0.1112008839845657
-5918313,author,484,704, John Cheever,False,False,-1.8894065500547488
-4666651,author,484,353, John Le Carre,False,False,-1.549830261967145
-596547,screenwriter,533,936, David S. Goyer,False,False,-1.4709051460027696
-1953459,genre,91,3283, drama,False,False,-2.491905212402344
-2647017,screenwriter,533,5130, John Waters,False,False,-3.18618106842041
-1680080,country,182,63056, Australia,False,False,-1.0412436723709106
-4684145,sport,560,343, Football,False,False,-1.577727198600769
-3243026,religion,106,392, Hinduism,False,False,-1.3582122921943665
-1316602,composer,639,504, John Barry,False,False,-1.8960343599319456
-5929687,author,484,104, Jane Austen,False,False,-0.9055559744568504
-1001108,author,484,5727, John Buchan,False,False,-0.0907801039672146
-935146,director,526,154, Jean-Luc Godard,False,False,-0.8969851380912587
-2908490,author,484,270, John Irving,False,False,-2.4056491255760197
-5920784,producer,164,205, Stephen Sondheim,False,False,-0.6425276637219213
-2592338,screenwriter,533,1226, Peter Bogdanovich,False,False,-1.8088449214119464
-1486783,genre,91,321, fiction,False,False,-2.129791021347046
-6281394,producer,164,2301, John Singleton,False,False,-2.6593689342650277
-4270058,country,182,10846, Illinois,False,False,-0.3095895051956177
-2073781,genre,91,8511, drama,False,False,-2.8862171173095703
-6004711,author,484,484, Haruki Murakami,False,False,-0.5416959173686337
-5918653,genre,91,388, political drama,False,False,-1.6938315629959106
-3956481,director,526,1333, Michael Bay,False,False,-2.3044626116752625
-2833871,screenwriter,533,3799, John Le Carré,False,False,-1.7566123949363828
-2435793,director,526,492, John Sayles,False,False,-0.0589035384667416
-5945781,screenwriter,533,252, John Pemberton,False,False,-0.57765322799969
-3423081,producer,164,13927, Michael Bay,False,False,-2.89298939704895
-4404592,producer,164,17980, Michael Bay,False,False,-2.344397723674774
-6547647,country,182,13083, Michigan,False,False,-0.2586760818958282
-5846736,mother,292,34405, Maria Theresa,False,False,-1.9236324429512024
-5937854,producer,164,95, John Lee Hancock,False,False,-0.904727814932509
-3950149,author,484,906, John Irving,False,False,-2.9385457038879395
-4763253,sport,560,197, Football,False,False,-1.432567119598389
-3633815,composer,639,556, John Williams,False,False,-2.2358128428459167
-288745,screenwriter,533,3509, Michael Cera,False,False,-2.082262322306633
-2059485,country,182,102, China,False,False,-2.2688658237457275
-4652935,producer,164,2303, S. S. Rajamouli,False,False,-0.9443091948196524
-1932836,author,484,3119, John Pemberton,False,False,-1.1195669956941856
-2630371,religion,106,22138, Judaism,True,False,-0.4725699722766876
-2213921,director,526,729, John Huston,False,False,-1.4230298636248335
-977275,director,526,1169, K. S. Rajamouli,False,False,-1.090432771932683
-2766419,author,484,1137, John Milton,False,False,-2.781546115875244
-636616,capital,422,724517, Beijing,True,False,-0.0841216072440147
-144024,place of birth,218,947, New York,False,False,-1.000197121873498
-2085939,screenwriter,533,1745, David Wain,False,False,-2.385190566380819
-1447840,screenwriter,533,422, John Pemberton,False,False,-0.8755475411089719
-1758617,director,526,654, Zhang Yimou,False,False,-0.5441465892945416
-3524273,screenwriter,533,762, John Madden,False,False,-2.9305495023727417
-5915241,screenwriter,533,252, Seth Rogen,False,False,-1.229501603767858
-37343,screenwriter,533,4160, John Pemberton,False,False,-1.0429347134704583
-3677957,director,526,1335, John Huston,False,False,-1.4932806482344556
-2963470,father,257,326, Æthelburh of Wilton,False,False,-0.2680880636180518
-3080610,director,526,452, Michael Winterbottom,False,False,-1.793166090734303
-5773632,director,526,1711, Michael Winterbottom,False,False,-1.0330230155959723
-2839162,capital,422,403188, Rome,True,False,-0.0908941626548767
-1660687,country,182,1068, Indonesia,True,False,-0.5945416688919067
-6502612,color,472,319409, Red,True,False,-2.12969183921814
-1332334,country,182,45, Haiti,True,False,-0.2601793110370636
-5962937,country,182,44, Czech Republic,True,False,-0.3074458241462707
-1571598,author,484,591, Mary Shelley,False,False,-0.49867690121755
-3087676,genre,91,369, drama,False,False,-2.287740468978882
-5669872,producer,164,1280, Michael Bay,False,False,-2.4079513549804688
-4265255,occupation,22,139, Member of the European Parliament,False,True,-0.4065530586056411
-2229505,genre,91,4342, fiction,False,False,-2.1960997581481934
-5137613,composer,639,1408, Hans Zimmer,False,False,-1.800853580236435
-1913397,country,182,255, Maryland,False,False,-0.8086557388305664
-5592430,capital,422,151484, Georgetown,True,False,-0.1259436160326004
-1074278,producer,164,67, David Fincher,False,False,-1.7211098053667229
-3763572,composer,639,2846, John Williams,False,False,-1.8939778208732605
-196395,religion,106,45, Roman Catholic,False,False,-0.653555616736412
-3276946,director,526,1090, Alexander Payne,False,False,-1.313423931598663
-5113116,director,526,4170, David Lynch,False,False,-2.3047667741775517
-2374633,country,182,6794, in the United States,False,True,-1.408156916499138
-1919697,screenwriter,533,3948, John Pemberton,False,False,-1.541639847739134
-1107870,color,472,5035, Blue,False,False,-2.002178192138672
-5045808,mother,292,43190, Mary,False,False,-3.4804060459136963
-6374945,capital of,97,113, Burkina Faso,False,False,-0.4384450515799472
-2663309,director,526,998, John Huston,False,False,-1.669215769584601
-2311628,author,484,178, John Ruskin,False,False,-1.8129470044126117
-5088311,religion,106,5861, Christian,False,False,-2.1762638092041016
-6042636,genre,91,229, fiction,False,False,-1.8638834953308103
-614930,country,182,403, United States,True,False,-0.3570602741092443
-432839,country,182,1164, Russia,True,False,-0.4042426943778991
-3520627,director,526,931, Michael Winterbottom,False,False,-1.403832419309765
-1402351,sport,560,86, Football,True,False,-2.1214210987091064
-843797,occupation,22,66, Writer,False,False,-3.630409240722656
-75263,author,484,142, John Pemberton,False,False,-1.1226594197105442
-35,capital,422,61258, Libreville,True,False,-0.35295041045174
-244122,director,526,28865, John Carpenter,False,False,-0.3203543834388256
-5777706,author,484,438, Charles Dickens,False,False,-1.6978263705968857
-474017,director,526,3930, Alfred Hitchcock,False,False,-1.351919274777174
-6532951,country,182,275, Australia,True,True,-0.1998658031225204
-4532127,genre,91,2389, Drama,False,False,-0.5578285455703735
-3095296,director,526,531, John Sayles,False,False,-0.0819784156919922
-2886182,screenwriter,533,127, John Pemberton,False,False,-1.3206289323788951
-1570230,genre,91,514, drama,False,False,-1.91379714012146
-3675616,screenwriter,533,199, David Gordon Green,False,False,-1.7757311208794515
-4310070,producer,164,1775, David Fincher,False,False,-1.5122867898317054
-701352,capital,422,258119, Santa Fe,True,False,-0.2239005751907825
-3450665,sport,560,746, Rugby,False,False,-1.9071437120437624
-186809,genre,91,52880, Horror,False,True,-0.9378390312194824
-3903448,composer,639,148, John Barry,False,False,-1.9920528531074524
-3952467,country,182,48, Serbia,False,False,-1.267501950263977
-5041070,screenwriter,533,1711, John Pemberton,False,False,-1.291990514961071
-3514599,capital,422,10008, Cairo,True,False,-0.3367368280887604
-6081120,genre,91,105, romance,False,False,-1.778693437576294
-3543733,screenwriter,533,456, John Milius,False,False,-1.7159261300694195
-3294045,capital of,97,5244, Buryatia,False,True,-0.2869082734105177
-5547893,genre,91,4579, drama,False,False,-1.2833861112594604
-4329831,genre,91,474, comedy,False,False,-1.911760687828064
-6533919,country,182,229, Belgium,False,False,-1.668604850769043
-5263647,country,182,292, Nigeria,False,False,-2.3059864044189453
-4801270,screenwriter,533,519, Kailashey Kelenkari,False,False,-0.478237710398389
-6385442,sport,560,29, Football,True,False,-1.618260622024536
-1162864,author,484,177, J.R.R. Tolkien,False,False,-0.0200739961333705
-4484472,country,182,79, United Kingdom,False,False,-1.3406470715999603
-215156,country,182,36, Japan,True,False,-0.8010169863700867
-1504171,occupation,22,190041, Singer,False,False,-1.6973974704742432
-5951099,screenwriter,533,298, John Madden,False,False,-2.6581623554229736
-2223262,mother,292,1757," Eleanor of England, Countess of Bar, was born on the 29th",False,False,-0.2409942173554251
-5644258,father,257,4842, Robert Stewart,False,False,-1.939689040184021
-1855691,director,526,483, John Pemberton,False,False,-1.4717675961001078
-1035763,director,526,97, John Cleese,False,False,-0.163708941390117
-2756925,screenwriter,533,156, John Pemberton,False,False,-1.1767408861633155
-1466602,screenwriter,533,765, John Milius,False,False,-1.760547769255936
-1868517,composer,639,6064, John Williams,False,False,-1.1212308704853058
-6161854,director,526,2171, John Frankenheimer,False,False,-1.7309085003410776
-3422786,author,484,303, John Steinbeck,False,False,-1.9239534645651777
-4584501,screenwriter,533,686, John Osborne,False,False,-2.904027223587036
-380223,screenwriter,533,6328, Charles Dickens,True,False,-0.6671830005943775
-3981349,place of birth,218,401, New York,False,False,-1.1481993943452835
-2664757,composer,639,355, Ludwig van Beethoven,False,False,-0.5540799139591399
-5485882,composer,639,1319, John Cage,False,False,-2.5835890769958496
-3178175,author,484,2411, James Patterson,False,False,-2.720281958580017
-4405633,producer,164,1176, Robert De Niro,False,False,-1.2642104004407884
-1401285,producer,164,1043, Gianni Lonzi,False,False,-1.0225117769092322
-1349825,place of birth,218,127, Jakarta,False,False,-2.286098003387451
-3183040,author,484,237, John Irving,False,False,-2.616211831569672
-790430,place of birth,218,184, Berlin,False,False,-2.017268657684326
-3845086,director,526,10943, David Lynch,False,False,-1.870428025722504
-1120961,genre,91,183, comedy,False,False,-2.141258001327514
-1134562,screenwriter,533,69, John Pemberton,False,False,-1.3857681904919446
-285213,director,526,284, David Lynch,False,False,-2.292629837989807
-632979,sport,560,75, Football,False,False,-1.2714521884918213
-353985,capital,422,1851, Nidwalden,False,False,-0.2718724089985092
-285832,producer,164,1043, John Birt,False,False,-0.2608861560972097
-1997293,producer,164,26876, Michael Bay,False,False,-2.1665483117103577
-201733,screenwriter,533,9797, John Madden,False,False,-2.890875101089477
-72369,genre,91,1916, crime,False,False,-1.9264699220657349
-2897641,sport,560,75, Football,True,False,-0.7324740886688232
-595358,producer,164,4891, David Fincher,False,False,-1.534518968546763
-4968395,country,182,394, United States,False,False,-1.2587957680225372
-1001697,producer,164,32512, Michael Bay,False,False,-2.208962619304657
-1108230,composer,639,73, John Williams,False,False,-2.2812491059303284
-902091,country,182,35, New York,False,False,-1.2528045251965525
-5970015,author,484,446, John Irving,False,False,-2.9368220567703247
-144894,author,484,50, J.M. Coetzee,False,False,-1.0072439170185783
-398909,composer,639,6570, Hans Zimmer,False,False,-1.2059137858450413
-2951170,occupation,22,994, programmer,False,False,-2.0727434158325195
-3172905,producer,164,412, David Gordon Green,False,False,-1.5841101718445618
-3261768,religion,106,324, Christian,False,False,-2.272408962249756
-5169150,place of birth,218,50, Stockholm,False,False,-1.0280765295028689
-500365,genre,91,5981, platform,False,True,-0.8043419718742371
-5777300,genre,91,380230, drama,False,False,-1.994748592376709
-2114057,director,526,256, Michael Mann,False,False,-2.339919090270996
-1117503,author,484,625, James Joyce,False,False,-2.6239152550697327
-617409,place of birth,218,59, Berlin,False,False,-2.601446390151977
-4365138,genre,91,665, Action,False,False,-0.238628402352333
-394543,capital of,97,29196, Belgium,False,False,-0.2177595198154449
-691428,director,526,269, David Lynch,False,False,-1.9858291149139404
-1722398,capital of,97,193323, Italy,True,True,-0.4630944728851318
-5770014,screenwriter,533,17560, Michael Winterbottom,False,False,-1.4794465797021985
-6521985,religion,106,71, Catholicism,False,False,-1.5874321460723877
-1081675,country,182,22, Peru,True,False,-1.260236144065857
-2181196,producer,164,51577, Noah Baumbach,False,False,-0.6870416076853871
-5979071,screenwriter,533,2078, John Buchan,False,False,-1.616701004716257
-4557797,place of birth,218,266, Mumbai,False,False,-2.259902000427246
-2961443,genre,91,6174, drama,False,False,-2.1846282482147217
-1717233,capital,422,170779, Sofia,True,False,-0.0593084787251427
-294568,country,182,205, Norway,False,False,-0.927791953086853
-6001463,screenwriter,533,669, David Koepp,False,False,-1.2884116196073592
-2379460,sport,560,103, football,False,False,-1.889403700828552
-2245901,father,257,2551, Afonso I,False,False,-0.788431559728148
+id,prop,prop_id,s_pop,pred,is_correct,has_answer,conf,is_correct_strict
+5139062,mother,292,1326, Melissa Benn,False,False,-0.9075208678841592,False
+4638370,director,526,20800, John Huston,False,False,-1.6864515370786346,False
+1353394,screenwriter,533,140, John Madden,False,False,-2.827552437782288,False
+5923312,author,484,62, Adam Smith,False,False,-0.7957877155859023,False
+3356649,place of birth,218,33, Rome,False,False,-1.959051489830017,False
+4996780,place of birth,218,455, Paris,False,False,-1.3462129831314087,False
+743705,occupation,22,145, Teacher,False,False,-3.8325366973876953,False
+2357044,author,484,12770, John Updike,False,False,-1.1942943101057608,False
+4066277,country,182,736, United States,True,False,-0.3552709412761032,True
+1642428,occupation,22,369, Actor,False,False,-3.396007537841797,False
+4188191,composer,639,3958, John Barry,False,False,-1.4462207555770874,False
+605897,genre,91,1742, drama,False,False,-2.2402045726776123,False
+1473780,country,182,160, United States,False,False,-0.9737767577171326,False
+1223424,capital of,97,122060, Austria,True,False,-0.1816246807575225,True
+5999251,capital,422,264, Côte d'Ivoire,False,False,-0.6194995674122765,False
+5948044,author,484,557, Stephen King,False,False,-2.206600069999695,False
+780737,producer,164,16957, James Franco,False,False,-2.328102648258209,False
+6378269,director,526,4578, Peter Cook,False,False,-2.307339191436768,False
+994647,genre,91,2083, science fiction,False,False,-0.4305427237413823,False
+4409246,genre,91,289, drama,False,False,-2.353276014328003,False
+4522741,screenwriter,533,13879, Ben Stiller,False,False,-1.9824073296040297,False
+837389,occupation,22,86, Professor,False,False,-3.617645740509033,False
+2671483,composer,639,534, John Barry,False,False,-1.9652318954467771,False
+3804084,author,484,1872, John Crowley,False,False,-2.73549747467041,False
+1872067,occupation,22,326, teacher,False,False,-3.8135039806365967,False
+666610,genre,91,663, a game,False,False,-2.7129995822906494,False
+656905,composer,639,1736, Hans Zimmer,False,False,-1.4606276154518127,False
+2250382,screenwriter,533,1108, John Pemberton,False,False,-0.9034125412945286,False
+1791448,author,484,118, John Irving,False,False,-2.7594165802001958,False
+2485455,capital,422,3135, Marseille,False,False,-0.7279885113239288,False
+6506411,father,257,143, Alfred Jefferis Turner,False,False,-0.3642911409959197,False
+5179731,author,484,89, John Green,False,False,-3.011568784713745,False
+5789578,director,526,104, Michael Winterbottom,False,False,-1.5877914757778246,False
+6365456,father,257,424, Dawit II,False,False,-1.1066260849280904,False
+5422818,screenwriter,533,314, John Pemberton,False,False,-1.856416433060076,False
+2174102,genre,91,153, drama,False,False,-1.6509753465652466,False
+5006891,capital,422,48, Saanen,True,False,-0.1871618771304687,True
+5781178,composer,639,403, John Williams,False,False,-2.188868999481201,False
+2990323,genre,91,2172, mystery,False,False,-1.1597445011138916,False
+184846,producer,164,12813, Michael Winterbottom,False,False,-1.6011342080309987,False
+2556139,director,526,1883, John Frankenheimer,False,False,-0.0958616570618081,False
+5557556,genre,91,174, comedy,False,False,-1.908795952796936,False
+4330249,mother,292,115, Anna Molander,False,False,-1.5162990963241707,False
+2507186,capital,422,233709, Helsinki,True,False,-0.0604024454951286,True
+946336,genre,91,500, mystery,False,False,-1.2645233869552612,False
+2691112,author,484,262, John Pemberton,False,False,-1.4173497522278922,False
+2226731,genre,91,1248, mystery,False,False,-2.16410493850708,False
+3974408,producer,164,9, David Heyman,False,False,-1.5144824689875047,False
+2449796,screenwriter,533,12896, Jeph Loeb,False,False,-0.91166724220966,False
+4921831,religion,106,3378, Roman Catholic,False,False,-0.8300375789403915,False
+1646720,producer,164,145, David Fincher,False,False,-1.6149242066894658,False
+1342774,producer,164,840, Michael De Luca,False,False,-1.5150047502247617,False
+1481181,sport,560,260, football,True,False,-0.7481650114059448,True
+1977383,genre,91,5227, drama,False,False,-1.7878283262252808,False
+3793259,father,257,130, Charles de Gaulle,False,False,-1.3956096736801555,False
+192261,producer,164,42852, John Waters,False,False,-2.695661425590515,False
+2987359,director,526,75, John Pemberton,False,False,-1.487650425187894,False
+237759,producer,164,11808, John Ford,False,False,-1.021910883486271,False
+264374,country,182,81, Pennsylvania,False,False,-1.0468353033065796,False
+3720231,screenwriter,533,2008, John Buchan,False,False,-1.8181645466635623,False
+1237178,director,526,176, John Huston,False,False,-1.4984399977644596,False
+2647530,screenwriter,533,2395, John Mudd,False,False,-2.1012330055236816,False
+4234132,genre,91,123, comedy,False,False,-1.484389066696167,False
+2071152,genre,91,19003, Jazz,False,False,-1.1799918413162231,False
+1306567,religion,106,3669, Christian,False,False,-1.4319932460784912,False
+1228958,screenwriter,533,1467, John Pemberton,False,False,-1.293987582772388,False
+1594184,producer,164,264, David Zucker,False,False,-3.2208034992218018,False
+3826516,screenwriter,533,199, David Koepp,False,False,-1.6455832840874791,False
+1194410,screenwriter,533,5327, John Frankenheimer,False,False,-0.1235518651131618,False
+5960486,producer,164,2230, Karl Tunberg,False,False,-0.8356978397544784,False
+5560949,director,526,2230, Margaret Atwood,False,False,-0.8575180341867963,False
+4496891,screenwriter,533,21501, Ben Winston,False,False,-2.6399147510528564,False
+1387057,director,526,96, John Huston,False,False,-1.6638245727905694,False
+232809,place of birth,218,60, Madrid,False,False,-1.995217084884644,False
+4997435,genre,91,18643, drama,False,False,-1.334728479385376,False
+388189,author,484,773, Jean-Paul Sartre,False,False,-0.8569426574006987,False
+5580295,screenwriter,533,87064, David Gordon Green,False,False,-1.1759714592869084,False
+5982132,occupation,22,152, Actor,False,False,-2.7857840061187744,False
+2105565,author,484,3122, Jane Austen,False,False,-1.0795521246594335,False
+1969958,director,526,618, John Pemberton,False,False,-0.8303474453350645,False
+3106384,place of birth,218,342, London,False,False,-1.906238317489624,False
+246959,screenwriter,533,1944, David Koepp,False,False,-1.3152864733710885,False
+2763878,capital,422,59881, Melbourne,True,False,-1.0388330221176147,True
+5303917,director,526,1150, Ken Russell,False,False,-0.9659413818735628,False
+3868066,father,257,51795, Steve Kerr,False,False,-1.6115237586200235,False
+2281877,author,484,1601, Leonardo da Vinci,False,False,-0.7477155830274569,False
+4393083,director,526,148, John Pemberton,False,False,-0.5978596880740952,False
+2899611,director,526,84, Federico Fellini,False,False,-0.687045938859228,False
+1574139,composer,639,766, John Cage,False,False,-2.2304375171661377,False
+4613808,author,484,769, J.M. Coetzee,False,False,-0.9682250821954638,False
+1804783,genre,91,13840, pop,True,False,-1.2194422483444214,True
+1187163,genre,91,118, drama,False,False,-2.130822896957397,False
+3467441,author,484,3321, David Foster Wallace,False,False,-1.4065944117804368,False
+788195,producer,164,14830, Michael Winterbottom,False,False,-1.70137395337224,False
+5839103,genre,91,1288, Drama,False,False,-1.5470924377441406,False
+3672517,country,182,60, India,False,False,-1.1989128589630127,False
+2068848,capital,422,48626, Honiara,False,False,-0.7799015719986832,False
+2194088,genre,91,3931, romantic comedy,True,True,-0.4665258834138512,True
+1860470,director,526,572, Michael Mann,False,False,-1.6158406138420105,False
+1001346,author,484,53, Rumi,False,False,-2.050083100795746,False
+1225029,capital,422,57245, London,True,False,-0.2292697429656982,True
+776128,producer,164,996, Lalo Schifrin,False,False,-0.8960934397502569,False
+2654404,country,182,225, England,False,False,-2.1569361686706543,False
+1391948,genre,91,21230, mystery,False,False,-2.3718130588531494,False
+3315030,screenwriter,533,5710, John Pemberton,False,False,-1.313367343180289,False
+1116447,director,526,510, David Lynch,False,False,-2.243933916091919,False
+3784290,sport,560,110, Football,False,False,-1.4003254175186155,False
+4331418,occupation,22,216, Teacher,False,False,-3.632246494293213,False
+1054401,genre,91,560, mystery,False,False,-1.2193851470947266,False
+5187250,father,257,118, John Burt-Wintonick,False,False,-0.6936456771966603,False
+2849306,genre,91,158, mystery,False,False,-2.26790452003479,False
+3755811,director,526,202, John Huston,False,False,-1.4790429841571795,False
+832908,capital,422,816653, Ottawa,True,False,-1.2658326625823977,True
+1549444,country,182,2739, United States,True,False,-1.3564750254154203,False
+1616396,capital,422,570, Puno,True,False,-0.8608792326413095,True
+1358512,genre,91,20989, science fiction,False,False,-1.119685646146536,False
+447830,country,182,4158, Japan,True,False,-0.0893267765641212,True
+2254982,capital,422,156803, Santiago,True,False,-0.1112008839845657,True
+5918313,author,484,704, John Cheever,False,False,-1.8894065500547488,False
+4666651,author,484,353, John Le Carre,False,False,-1.549830261967145,False
+596547,screenwriter,533,936, David S. Goyer,False,False,-1.4709051460027696,False
+1953459,genre,91,3283, drama,False,False,-2.491905212402344,False
+2647017,screenwriter,533,5130, John Waters,False,False,-3.18618106842041,False
+1680080,country,182,63056, Australia,False,False,-1.0412436723709106,False
+4684145,sport,560,343, Football,False,False,-1.577727198600769,False
+3243026,religion,106,392, Hinduism,False,False,-1.3582122921943665,False
+1316602,composer,639,504, John Barry,False,False,-1.8960343599319456,False
+5929687,author,484,104, Jane Austen,False,False,-0.9055559744568504,False
+1001108,author,484,5727, John Buchan,False,False,-0.0907801039672146,False
+935146,director,526,154, Jean-Luc Godard,False,False,-0.8969851380912587,False
+2908490,author,484,270, John Irving,False,False,-2.4056491255760197,False
+5920784,producer,164,205, Stephen Sondheim,False,False,-0.6425276637219213,False
+2592338,screenwriter,533,1226, Peter Bogdanovich,False,False,-1.8088449214119464,False
+1486783,genre,91,321, fiction,False,False,-2.129791021347046,False
+6281394,producer,164,2301, John Singleton,False,False,-2.6593689342650277,False
+4270058,country,182,10846, Illinois,False,False,-0.3095895051956177,False
+2073781,genre,91,8511, drama,False,False,-2.8862171173095703,False
+6004711,author,484,484, Haruki Murakami,False,False,-0.5416959173686337,False
+5918653,genre,91,388, political drama,False,False,-1.6938315629959106,False
+3956481,director,526,1333, Michael Bay,False,False,-2.3044626116752625,False
+2833871,screenwriter,533,3799, John Le Carré,False,False,-1.7566123949363828,False
+2435793,director,526,492, John Sayles,False,False,-0.0589035384667416,False
+5945781,screenwriter,533,252, John Pemberton,False,False,-0.57765322799969,False
+3423081,producer,164,13927, Michael Bay,False,False,-2.89298939704895,False
+4404592,producer,164,17980, Michael Bay,False,False,-2.344397723674774,False
+6547647,country,182,13083, Michigan,False,False,-0.2586760818958282,False
+5846736,mother,292,34405, Maria Theresa,False,False,-1.9236324429512024,False
+5937854,producer,164,95, John Lee Hancock,False,False,-0.904727814932509,False
+3950149,author,484,906, John Irving,False,False,-2.9385457038879395,False
+4763253,sport,560,197, Football,False,False,-1.432567119598389,False
+3633815,composer,639,556, John Williams,False,False,-2.2358128428459167,False
+288745,screenwriter,533,3509, Michael Cera,False,False,-2.082262322306633,False
+2059485,country,182,102, China,False,False,-2.2688658237457275,False
+4652935,producer,164,2303, S. S. Rajamouli,False,False,-0.9443091948196524,False
+1932836,author,484,3119, John Pemberton,False,False,-1.1195669956941856,False
+2630371,religion,106,22138, Judaism,True,False,-0.4725699722766876,True
+2213921,director,526,729, John Huston,False,False,-1.4230298636248335,False
+977275,director,526,1169, K. S. Rajamouli,False,False,-1.090432771932683,False
+2766419,author,484,1137, John Milton,False,False,-2.781546115875244,False
+636616,capital,422,724517, Beijing,True,False,-0.0841216072440147,True
+144024,place of birth,218,947, New York,False,False,-1.000197121873498,False
+2085939,screenwriter,533,1745, David Wain,False,False,-2.385190566380819,False
+1447840,screenwriter,533,422, John Pemberton,False,False,-0.8755475411089719,False
+1758617,director,526,654, Zhang Yimou,False,False,-0.5441465892945416,False
+3524273,screenwriter,533,762, John Madden,False,False,-2.9305495023727417,False
+5915241,screenwriter,533,252, Seth Rogen,False,False,-1.229501603767858,False
+37343,screenwriter,533,4160, John Pemberton,False,False,-1.0429347134704583,False
+3677957,director,526,1335, John Huston,False,False,-1.4932806482344556,False
+2963470,father,257,326, Æthelburh of Wilton,False,False,-0.2680880636180518,False
+3080610,director,526,452, Michael Winterbottom,False,False,-1.793166090734303,False
+5773632,director,526,1711, Michael Winterbottom,False,False,-1.0330230155959723,False
+2839162,capital,422,403188, Rome,True,False,-0.0908941626548767,True
+1660687,country,182,1068, Indonesia,True,False,-0.5945416688919067,True
+6502612,color,472,319409, Red,True,False,-2.12969183921814,True
+1332334,country,182,45, Haiti,True,False,-0.2601793110370636,True
+5962937,country,182,44, Czech Republic,True,False,-0.3074458241462707,True
+1571598,author,484,591, Mary Shelley,False,False,-0.49867690121755,False
+3087676,genre,91,369, drama,False,False,-2.287740468978882,False
+5669872,producer,164,1280, Michael Bay,False,False,-2.4079513549804688,False
+4265255,occupation,22,139, Member of the European Parliament,False,True,-0.4065530586056411,False
+2229505,genre,91,4342, fiction,False,False,-2.1960997581481934,False
+5137613,composer,639,1408, Hans Zimmer,False,False,-1.800853580236435,False
+1913397,country,182,255, Maryland,False,False,-0.8086557388305664,False
+5592430,capital,422,151484, Georgetown,True,False,-0.1259436160326004,True
+1074278,producer,164,67, David Fincher,False,False,-1.7211098053667229,False
+3763572,composer,639,2846, John Williams,False,False,-1.8939778208732605,False
+196395,religion,106,45, Roman Catholic,False,False,-0.653555616736412,False
+3276946,director,526,1090, Alexander Payne,False,False,-1.313423931598663,False
+5113116,director,526,4170, David Lynch,False,False,-2.3047667741775517,False
+2374633,country,182,6794, in the United States,False,True,-1.408156916499138,False
+1919697,screenwriter,533,3948, John Pemberton,False,False,-1.541639847739134,False
+1107870,color,472,5035, Blue,False,False,-2.002178192138672,False
+5045808,mother,292,43190, Mary,False,False,-3.4804060459136963,False
+6374945,capital of,97,113, Burkina Faso,False,False,-0.4384450515799472,False
+2663309,director,526,998, John Huston,False,False,-1.669215769584601,False
+2311628,author,484,178, John Ruskin,False,False,-1.8129470044126117,False
+5088311,religion,106,5861, Christian,False,False,-2.1762638092041016,False
+6042636,genre,91,229, fiction,False,False,-1.8638834953308103,False
+614930,country,182,403, United States,True,False,-0.3570602741092443,True
+432839,country,182,1164, Russia,True,False,-0.4042426943778991,True
+3520627,director,526,931, Michael Winterbottom,False,False,-1.403832419309765,False
+1402351,sport,560,86, Football,True,False,-2.1214210987091064,True
+843797,occupation,22,66, Writer,False,False,-3.630409240722656,False
+75263,author,484,142, John Pemberton,False,False,-1.1226594197105442,False
+35,capital,422,61258, Libreville,True,False,-0.35295041045174,True
+244122,director,526,28865, John Carpenter,False,False,-0.3203543834388256,False
+5777706,author,484,438, Charles Dickens,False,False,-1.6978263705968857,False
+474017,director,526,3930, Alfred Hitchcock,False,False,-1.351919274777174,False
+6532951,country,182,275, Australia,True,True,-0.1998658031225204,False
+4532127,genre,91,2389, Drama,False,False,-0.5578285455703735,False
+3095296,director,526,531, John Sayles,False,False,-0.0819784156919922,False
+2886182,screenwriter,533,127, John Pemberton,False,False,-1.3206289323788951,False
+1570230,genre,91,514, drama,False,False,-1.91379714012146,False
+3675616,screenwriter,533,199, David Gordon Green,False,False,-1.7757311208794515,False
+4310070,producer,164,1775, David Fincher,False,False,-1.5122867898317054,False
+701352,capital,422,258119, Santa Fe,True,False,-0.2239005751907825,True
+3450665,sport,560,746, Rugby,False,False,-1.9071437120437624,False
+186809,genre,91,52880, Horror,False,True,-0.9378390312194824,False
+3903448,composer,639,148, John Barry,False,False,-1.9920528531074524,False
+3952467,country,182,48, Serbia,False,False,-1.267501950263977,False
+5041070,screenwriter,533,1711, John Pemberton,False,False,-1.291990514961071,False
+3514599,capital,422,10008, Cairo,True,False,-0.3367368280887604,True
+6081120,genre,91,105, romance,False,False,-1.778693437576294,False
+3543733,screenwriter,533,456, John Milius,False,False,-1.7159261300694195,False
+3294045,capital of,97,5244, Buryatia,False,True,-0.2869082734105177,False
+5547893,genre,91,4579, drama,False,False,-1.2833861112594604,False
+4329831,genre,91,474, comedy,False,False,-1.911760687828064,False
+6533919,country,182,229, Belgium,False,False,-1.668604850769043,False
+5263647,country,182,292, Nigeria,False,False,-2.3059864044189453,False
+4801270,screenwriter,533,519, Kailashey Kelenkari,False,False,-0.478237710398389,False
+6385442,sport,560,29, Football,True,False,-1.618260622024536,True
+1162864,author,484,177, J.R.R. Tolkien,False,False,-0.0200739961333705,False
+4484472,country,182,79, United Kingdom,False,False,-1.3406470715999603,False
+215156,country,182,36, Japan,True,False,-0.8010169863700867,True
+1504171,occupation,22,190041, Singer,False,False,-1.6973974704742432,False
+5951099,screenwriter,533,298, John Madden,False,False,-2.6581623554229736,False
+2223262,mother,292,1757," Eleanor of England, Countess of Bar, was born on the 29th",False,False,-0.2409942173554251,False
+5644258,father,257,4842, Robert Stewart,False,False,-1.939689040184021,False
+1855691,director,526,483, John Pemberton,False,False,-1.4717675961001078,False
+1035763,director,526,97, John Cleese,False,False,-0.163708941390117,False
+2756925,screenwriter,533,156, John Pemberton,False,False,-1.1767408861633155,False
+1466602,screenwriter,533,765, John Milius,False,False,-1.760547769255936,False
+1868517,composer,639,6064, John Williams,False,False,-1.1212308704853058,False
+6161854,director,526,2171, John Frankenheimer,False,False,-1.7309085003410776,False
+3422786,author,484,303, John Steinbeck,False,False,-1.9239534645651777,False
+4584501,screenwriter,533,686, John Osborne,False,False,-2.904027223587036,False
+380223,screenwriter,533,6328, Charles Dickens,True,False,-0.6671830005943775,True
+3981349,place of birth,218,401, New York,False,False,-1.1481993943452835,False
+2664757,composer,639,355, Ludwig van Beethoven,False,False,-0.5540799139591399,False
+5485882,composer,639,1319, John Cage,False,False,-2.5835890769958496,False
+3178175,author,484,2411, James Patterson,False,False,-2.720281958580017,False
+4405633,producer,164,1176, Robert De Niro,False,False,-1.2642104004407884,False
+1401285,producer,164,1043, Gianni Lonzi,False,False,-1.0225117769092322,False
+1349825,place of birth,218,127, Jakarta,False,False,-2.286098003387451,False
+3183040,author,484,237, John Irving,False,False,-2.616211831569672,False
+790430,place of birth,218,184, Berlin,False,False,-2.017268657684326,False
+3845086,director,526,10943, David Lynch,False,False,-1.870428025722504,False
+1120961,genre,91,183, comedy,False,False,-2.141258001327514,False
+1134562,screenwriter,533,69, John Pemberton,False,False,-1.3857681904919446,False
+285213,director,526,284, David Lynch,False,False,-2.292629837989807,False
+632979,sport,560,75, Football,False,False,-1.2714521884918213,False
+353985,capital,422,1851, Nidwalden,False,False,-0.2718724089985092,False
+285832,producer,164,1043, John Birt,False,False,-0.2608861560972097,False
+1997293,producer,164,26876, Michael Bay,False,False,-2.1665483117103577,False
+201733,screenwriter,533,9797, John Madden,False,False,-2.890875101089477,False
+72369,genre,91,1916, crime,False,False,-1.9264699220657349,False
+2897641,sport,560,75, Football,True,False,-0.7324740886688232,True
+595358,producer,164,4891, David Fincher,False,False,-1.534518968546763,False
+4968395,country,182,394, United States,False,False,-1.2587957680225372,False
+1001697,producer,164,32512, Michael Bay,False,False,-2.208962619304657,False
+1108230,composer,639,73, John Williams,False,False,-2.2812491059303284,False
+902091,country,182,35, New York,False,False,-1.2528045251965525,False
+5970015,author,484,446, John Irving,False,False,-2.9368220567703247,False
+144894,author,484,50, J.M. Coetzee,False,False,-1.0072439170185783,False
+398909,composer,639,6570, Hans Zimmer,False,False,-1.2059137858450413,False
+2951170,occupation,22,994, programmer,False,False,-2.0727434158325195,False
+3172905,producer,164,412, David Gordon Green,False,False,-1.5841101718445618,False
+3261768,religion,106,324, Christian,False,False,-2.272408962249756,False
+5169150,place of birth,218,50, Stockholm,False,False,-1.0280765295028689,False
+500365,genre,91,5981, platform,False,True,-0.8043419718742371,False
+5777300,genre,91,380230, drama,False,False,-1.994748592376709,False
+2114057,director,526,256, Michael Mann,False,False,-2.339919090270996,False
+1117503,author,484,625, James Joyce,False,False,-2.6239152550697327,False
+617409,place of birth,218,59, Berlin,False,False,-2.601446390151977,False
+4365138,genre,91,665, Action,False,False,-0.238628402352333,False
+394543,capital of,97,29196, Belgium,False,False,-0.2177595198154449,False
+691428,director,526,269, David Lynch,False,False,-1.9858291149139404,False
+1722398,capital of,97,193323, Italy,True,True,-0.4630944728851318,True
+5770014,screenwriter,533,17560, Michael Winterbottom,False,False,-1.4794465797021985,False
+6521985,religion,106,71, Catholicism,False,False,-1.5874321460723877,False
+1081675,country,182,22, Peru,True,False,-1.260236144065857,True
+2181196,producer,164,51577, Noah Baumbach,False,False,-0.6870416076853871,False
+5979071,screenwriter,533,2078, John Buchan,False,False,-1.616701004716257,False
+4557797,place of birth,218,266, Mumbai,False,False,-2.259902000427246,False
+2961443,genre,91,6174, drama,False,False,-2.1846282482147217,False
+1717233,capital,422,170779, Sofia,True,False,-0.0593084787251427,True
+294568,country,182,205, Norway,False,False,-0.927791953086853,False
+6001463,screenwriter,533,669, David Koepp,False,False,-1.2884116196073592,False
+2379460,sport,560,103, football,False,False,-1.889403700828552,False
+2245901,father,257,2551, Afonso I,False,False,-0.788431559728148,False
