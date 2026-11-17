@@ -45,7 +45,7 @@ Không chạy lại được (nói rõ khi trình bày):
 | Phần | Làm gì | Xong khi có |
 |---|---|---|
 | 60% | Bài toán, vì sao, phương pháp, kết quả chạy lại | Bảng paper vs nhóm; hình theo độ nổi tiếng; 4 kết luận đúng/sai |
-| 30% | A (chính): Qwen2.5 base 0.5B → 7B × vanilla, BM25, adaptive. Thêm B hoặc C (chọn ngày 8/11) | Bảng so sánh mới; 4 kết luận còn đúng không |
+| 30% | A (chính): Qwen2.5 base 0.5B → 3B (kế hoạch đầu là tới 7B; bỏ 7B ngày 17/11, xem `docs/QUYET_DINH.md`) × vanilla, BM25, adaptive. Thêm B hoặc C (chọn ngày 8/11) | Bảng so sánh mới; 4 kết luận còn đúng không |
 | 10% | 4 phân tích trên kết quả đã lưu | 3–4 phát hiện, mỗi cái 1 con số + 1 ví dụ |
 
 - B: xếp hạng lại 5 đoạn BM25 bằng mô hình embedding.
