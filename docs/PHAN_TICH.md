@@ -1,6 +1,161 @@
 # Phân tích (10%)
 
-Mục 1 và 2 làm ở issue #35 và #36. File này viết tiếp khi các issue đó xong.
+Mục 1 (issue #35), 2 (issue #36), 3 (issue #37) và 4 (issue #38). Số liệu dùng cách chấm cũ (cột `is_correct`) trừ khi nói là chấm chặt; mục 1 đo chênh lệch giữa hai cách.
+
+## 1. Chấm chặt hơn thì điểm còn bao nhiêu (issue #35)
+
+### Câu hỏi
+
+Cách chấm của code gốc (cột `is_correct`) coi là đúng nếu một đáp án trong `possible_answers` xuất hiện **ở bất kỳ chỗ nào** trong câu trả lời, dưới dạng chuỗi con (nguyên bản, chữ thường hoặc viết hoa chữ đầu). Cách này thổi điểm lên bao nhiêu, và có làm đổi kết luận không?
+
+### Tóm tắt
+
+- Chấm chặt hạ điểm **0,23 đến 0,73 điểm** (1,5% đến 4,0% điểm cũ), ở cả vanilla (0,23 đến 0,48), BM25 (0,37 đến 0,73) và GenRead (0,28 đến 0,39).
+- **Không đổi kết luận.** Thứ hạng các mô hình giữ nguyên ở vanilla và BM25; BM25 vẫn hơn vanilla 7,83 đến 10,31 điểm (cũ: 8,05 đến 10,67); adaptive tốt bằng hoặc hơn cả hai cách ở 9 trên 9 mô hình (cũ: 8 trên 9, riêng GPT-Neo 1.3B thua BM25 0,002 điểm).
+- Cách chấm cũ **sai theo cả hai chiều**: nhận đáp án giả (1.275 lượt chạy, 454 câu khác nhau, 3,2% số câu) và bỏ sót câu đúng chỉ khác hoa thường hoặc dấu câu (135 lượt).
+
+Một câu cho slide: *cách chấm "chuỗi con" thổi điểm lên chưa tới 1 điểm (1,5% đến 4%): "Russia" được chấm đúng cho câu về nước Mỹ vì chữ viết tắt "US" nằm trong "R-us-sia"; chấm chặt hơn không đổi kết luận nào.*
+
+### Cách làm
+
+- Cột **mới** `is_correct_strict` (không thay `is_correct`) trong cả 40 file của `results/slim/`. Quy tắc: chuẩn hóa câu trả lời và đáp án (chữ thường, bỏ dấu câu, chỉ giữ chữ và số); đúng khi câu trả lời **chính là** một đáp án, hoặc **bắt đầu bằng** một đáp án và đáp án đó là cả từ.
+- Tính từ cột `pred` và `possible_answers` của PopQA, ghép theo `id`. Chạy: `python scripts/strict_grading.py` (cũng ghi `results/tables/strict_grading_summary.csv` và `strict_grading_by_relation.csv`); kiểm: `python scripts/test_strict_grading.py`.
+- Kiểm chéo: công thức chấm cũ tính lại từ cột `pred` cho ra **đúng** `is_correct` ở cả 291.340 dòng của 40 file (không dòng nào lệch), nên điểm cũ và điểm chặt so được trên đúng cùng câu trả lời.
+
+### Kết quả 1: điểm cũ và điểm chặt
+
+Đủ 14.267 câu. Mỗi ô: điểm cũ → điểm chặt.
+
+| Mô hình | vanilla | BM25 | GenRead | adaptive |
+|---|---|---|---|---|
+| GPT-Neo 1.3B | 11,35% → 10,90% | 21,61% → 21,04% | 11,65% → 11,26% | 21,61% → 21,04% |
+| GPT-Neo 2.7B | 12,37% → 11,98% | 22,75% → 22,16% | — | 23,27% → 22,74% |
+| OPT 1.3B | 12,29% → 11,81% | 21,96% → 21,29% | 12,24% → 11,96% | 22,04% → 21,46% |
+| OPT 2.7B | 12,56% → 12,31% | 23,23% → 22,62% | — | 23,79% → 23,21% |
+| OPT 6.7B (fp16) | 15,66% → 15,43% | 24,62% → 24,25% | — | 25,79% → 25,50% |
+| GPT-J 6B (fp16) | 16,09% → 15,81% | 24,43% → 23,99% | — | 25,56% → 25,21% |
+| Qwen2.5 0.5B | 11,99% → 11,65% | 22,55% → 21,82% | — | 22,72% → 22,04% |
+| Qwen2.5 1.5B | 15,95% → 15,65% | 24,88% → 24,37% | — | 25,69% → 25,30% |
+| Qwen2.5 3B | 18,35% → 18,07% | 26,40% → 25,90% | — | 27,65% → 27,28% |
+
+- Số câu chỉ đúng theo cách cũ (`lenient_only`): 35 đến 71 ở vanilla, 71 đến 115 ở BM25, 43 đến 57 ở GenRead. Số câu chỉ đúng theo cách chặt (`strict_only`): 0 đến 6 ở vanilla, 7 đến 19 ở BM25, 2 đến 3 ở GenRead.
+- BM25 mất nhiều hơn vanilla (0,37 đến 0,73 điểm so với 0,23 đến 0,48). Gợi ý, chưa kiểm: câu trả lời của BM25 dài hơn vanilla ở 9 trên 9 mô hình (trung bình 11,6 đến 14,2 ký tự so với 10,5 đến 11,5), nên có thể dễ khớp nhầm hơn.
+
+### Kết quả 2: các kết luận có đổi không
+
+| | Cách chấm cũ | Cách chấm chặt |
+|---|---|---|
+| BM25 hơn vanilla | 8,05 đến 10,67 điểm | 7,83 đến 10,31 điểm (giảm 0,12 đến 0,39) |
+| Tỉ lệ câu bị BM25 làm hại (vanilla đúng, BM25 sai) | 2,29% đến 4,49% | 2,33% đến 4,55% (tăng 0,02 đến 0,17 điểm) |
+| Tỉ lệ câu được BM25 giúp (vanilla sai, BM25 đúng) | 12,41% đến 13,77% | 12,38% đến 13,56% |
+| Adaptive tốt bằng hoặc hơn cả vanilla và BM25 | 8 trên 9 mô hình | 9 trên 9 mô hình |
+| Tỉ lệ câu phải tra cứu của adaptive | 78,6% đến 94,9% | 77,2% đến 94,6% (giảm 0,22 đến 1,63 điểm) |
+
+Cả bốn kết luận của paper giữ nguyên; các bảng ở `docs/BANG_TAI_LAP.md` (ô hại, ô giúp), mục 3 và 4 dưới đây dùng cách chấm cũ nên lệch cỡ trên, không đổi kết luận.
+
+### Kết quả 3: loại quan hệ nào bị thổi nhiều nhất
+
+Gộp vanilla và BM25 của 9 mô hình.
+
+| Loại quan hệ | Điểm cũ | Điểm chặt | Hụt (điểm %) | Hụt (% điểm cũ) |
+|---|---|---|---|---|
+| father | 22,32% | 19,75% | 2,57 | 11,5% |
+| country | 64,52% | 62,13% | 2,39 | 3,7% |
+| mother | 16,16% | 15,18% | 0,98 | 6,1% |
+| occupation | 19,76% | 18,79% | 0,97 | 4,9% |
+| color | 56,54% | 55,72% | 0,82 | 1,4% |
+| capital of | 40,57% | 39,81% | 0,77 | 1,9% |
+| religion | 15,65% | 14,99% | 0,66 | 4,2% |
+| place of birth | 30,82% | 30,18% | 0,64 | 2,1% |
+| sport | 68,25% | 67,68% | 0,57 | 0,8% |
+| capital | 64,41% | 63,98% | 0,43 | 0,7% |
+| genre | 10,06% | 9,71% | 0,35 | 3,5% |
+| author | 12,36% | 12,29% | 0,07 | 0,6% |
+| composer | 7,32% | 7,29% | 0,03 | 0,4% |
+| director | 5,01% | 4,99% | 0,01 | 0,3% |
+| screenwriter | 5,87% | 5,88% | -0,01 | -0,2% |
+| producer | 3,74% | 3,76% | -0,02 | -0,5% |
+
+`father` mất nhiều nhất (2,57 điểm, 11,5% điểm cũ) và `country` (2,39 điểm). Theo các ví dụ bên dưới, `country` là do tên viết tắt ("US", "IT") khớp trong chữ khác, còn `father` là do mô hình hay lặp lại chính tên người được hỏi trong khi đáp án chuẩn có cả họ riêng (như "Guardi"). Ở `producer` và `screenwriter` điểm chặt còn cao hơn điểm cũ một chút (-0,02 và -0,01 điểm): số câu cách cũ bỏ sót nhiều hơn số câu cách cũ nhận giả.
+
+### Năm ví dụ "đúng giả"
+
+Cách cũ chấm đúng, cách chặt chấm sai. Có hai kiểu: đáp án chỉ là một phần của chữ khác (482 lượt, 37,8% số lượt đúng-giả của vanilla và BM25), hoặc là cả từ nhưng không đứng đầu câu trả lời (793 lượt, 62,2%).
+
+| Câu hỏi (`id`) | Câu trả lời được chấm đúng | Đáp án khớp | Số lượt (trên 18) | Vì sao là đúng giả |
+|---|---|---|---|---|
+| In what country is Melbourne? (`6469182`) | Australia | "US" | 18 | "US" (nước Mỹ) nằm trong chữ A**us**tralia |
+| In what country is Cave? (`1285460`) | United States | "IT" | 12 | Đáp án là Italy; "IT" nằm trong chữ Un**it**ed |
+| In what city was William Osler born? (`2774555`) | Toronto, London, Montreal | "ON" | 16 | "ON" (Ontario) nằm trong T**oron**to, L**on**don, M**on**treal |
+| Who is the father of Giacomo Guardi? (`2347565`) | Giacomo Guardi | "Guardi" | 16 | Câu trả lời lặp lại chính tên người được hỏi (14 lượt); đáp án "Guardi" là họ của cha |
+| What is the capital of Tikhvinsky District? (`3671245`) | Tikhvinsky | "Tikhvin" | 10 | "Tikhvin" là tiền tố của tên huyện, không phải câu trả lời |
+
+Hai ví dụ nữa cùng loại: "In what country is Laika?" (`412759`) trả lời "Russia", chấm đúng ở cả 18 lượt vì "US" nằm trong R**us**sia; "What sport does 2002 Euro Beach Soccer Cup play?" (`3011411`) trả lời "beach soccer", chấm đúng ở 18 lượt vì có chữ "soccer", dù bóng đá bãi biển là môn khác.
+
+**Ngược lại, chấm chặt cũng sai:** "What is the religion of Catholic Church?" (`6497530`) trả lời "Roman Catholicism" (12 lượt) bị loại, dù rất có thể đúng (đáp án chuẩn "Catholicism"). Và 135 lượt chỉ-đúng-theo-cách-chặt là các câu đúng mà cách cũ bỏ sót vì khác hoa thường hoặc dấu câu: "Porto Novo" (đáp án "Porto-Novo"), "First Person Shooter" ("first-person shooter"), "A.H.M. Jones" ("A. H. M. Jones"), "Thomas D'Alesandro Jr." ("Thomas D'Alesandro, Jr.").
+
+### Kết luận
+
+- Chấm chặt hạ điểm chưa tới 1 điểm và không đổi kết luận nào; thứ hạng mô hình giữ nguyên.
+- Cách cũ sai theo cả hai chiều, nhưng chiều "nhận quá" lớn hơn nhiều (1.275 lượt so với 135 lượt).
+- Điểm yếu gốc là các đáp án rất ngắn (như "US", "IT", "ON") khớp trong chữ khác. Chỉ đòi khớp cả từ loại được 37,8% số lượt đúng-giả; 62,2% còn lại (đáp án là cả từ nhưng không đứng đầu, như "beach soccer" và tên người được hỏi) cần thêm luật "đứng đầu".
+
+### Giới hạn
+
+- Quy tắc chặt (chuẩn hóa, và đáp án phải đứng đầu) là do nhóm đặt, không có trong paper; "đứng đầu" loại cả những câu trả lời đúng nhưng dài hơn (như "Roman Catholicism"). Chưa kiểm tay xem quy tắc chặt đúng bao nhiêu phần trăm.
+- Chỉ so cột `is_correct` và `is_correct_strict`; chưa tính lại ngưỡng adaptive theo từng loại quan hệ bằng cách chặt ngoài con số adaptive chung ở bảng trên.
+- Cách chấm của recall@1 (`docs/BANG_TAI_LAP.md`) cũng so chuỗi con và chịu điểm yếu tương tự, nhưng chưa được tính lại bằng cách chặt.
+
+## 2. Độ chính xác theo 16 loại quan hệ (issue #36)
+
+### Câu hỏi
+
+Vì sao có loại quan hệ dễ, có loại khó, và độ nổi tiếng ảnh hưởng thế nào trong từng loại?
+
+### Cách làm
+
+- Với mỗi mô hình có kết quả đủ 14.267 câu và mỗi cách: độ chính xác theo từng loại quan hệ (cột `is_correct`, như paper), và **tương quan Pearson** giữa log10(độ nổi tiếng) và việc trả lời đúng (0 hoặc 1) trong loại đó, như Hình 4 của paper. Gần 1: câu càng nổi tiếng càng hay đúng; gần 0: độ nổi tiếng không liên quan.
+- Bảng và hình gộp 9 mô hình có đủ vanilla và BM25 (trung bình các mô hình). Chạy: `python scripts/analyze_by_relation.py` (ghi `results/tables/accuracy_by_relation.csv`, `accuracy_by_relation_summary.csv` và hình); kiểm: `python scripts/test_analyze_by_relation.py`.
+
+![Độ chính xác và tương quan với độ nổi tiếng theo loại quan hệ](../results/figs/acc_corr_by_relation.png)
+
+### Kết quả
+
+| Loại quan hệ | Số câu | vanilla | BM25 | BM25 hơn vanilla (điểm %) | Tương quan với độ nổi tiếng: vanilla | BM25 |
+|---|---|---|---|---|---|---|
+| capital | 645 | 61,7% | 67,1% | 5,4 | 0,46 | 0,24 |
+| sport | 547 | 57,4% | 79,1% | 21,7 | 0,08 | -0,11 |
+| color | 34 | 55,9% | 57,2% | 1,3 | 0,10 | -0,08 |
+| country | 838 | 55,1% | 73,9% | 18,8 | 0,04 | -0,13 |
+| capital of | 363 | 35,9% | 45,2% | 9,3 | 0,59 | 0,46 |
+| occupation | 532 | 20,8% | 18,7% | -2,1 | 0,27 | 0,20 |
+| religion | 338 | 14,5% | 16,8% | 2,2 | 0,31 | 0,30 |
+| place of birth | 584 | 13,4% | 48,2% | 34,8 | 0,04 | -0,14 |
+| father | 570 | 11,1% | 33,5% | 22,5 | 0,25 | 0,02 |
+| genre | 1619 | 6,4% | 13,7% | 7,3 | 0,20 | 0,05 |
+| mother | 187 | 5,8% | 26,5% | 20,7 | 0,24 | -0,05 |
+| author | 1514 | 5,2% | 19,5% | 14,4 | 0,41 | 0,12 |
+| composer | 978 | 4,0% | 10,6% | 6,6 | 0,12 | -0,07 |
+| screenwriter | 1999 | 3,1% | 8,6% | 5,6 | 0,26 | 0,00 |
+| director | 1999 | 2,7% | 7,3% | 4,6 | 0,29 | 0,01 |
+| producer | 1520 | 2,2% | 5,2% | 3,0 | 0,24 | -0,02 |
+
+### Ba nhận xét có số
+
+1. **Độ khó chênh nhau gấp 27,6 lần.** Với vanilla, 6 loại đạt từ 20,8% trở lên (capital 61,7%, sport 57,4%, color 55,9%, country 55,1%, capital of 35,9%, occupation 20,8%), còn 10 loại dưới 15% (thấp nhất producer 2,2%, director 2,7%, screenwriter 3,1%). Các loại dễ là loại có ít đáp án phổ biến, nên mô hình đoán trúng bằng đáp án hay gặp ("United States", "football", "red"); paper cũng nhận xét mô hình hay trả lời đáp án chiếm ưu thế ở các loại có ít đáp án (ví dụ "red" cho `color`). Đây là gợi ý, chưa kiểm riêng.
+2. **Độ nổi tiếng ảnh hưởng rất khác nhau theo loại.** Với vanilla, tương quan dương ở cả 16 loại (từ 0,04 đến 0,59) và từ 0,20 trở lên ở 11 loại; mạnh nhất ở `capital of` (0,59), `capital` (0,46), `author` (0,41), `religion` (0,31), `director` (0,29). Gần 0 ở `country` (0,04), `place of birth` (0,04), `sport` (0,08) và `color` (0,10, chỉ 34 câu nên rất nhiễu). Khớp với paper: ở `country` mô hình không cho thấy xu hướng theo độ nổi tiếng dù độ chính xác cao (55,1%).
+3. **BM25 làm phẳng sự phụ thuộc vào độ nổi tiếng ở cả 16 loại quan hệ** (tương quan của BM25 nhỏ hơn vanilla ở 16 trên 16 loại): `director` 0,29 xuống 0,01, `father` 0,25 xuống 0,02, `mother` 0,24 xuống -0,05, `screenwriter` 0,26 xuống 0,00, `country` 0,04 xuống -0,13. Đúng với kết luận 3 (retrieval giúp câu ít nổi tiếng). Mức tăng lớn nhất ở `place of birth` (+34,8 điểm), `father` (+22,5), `sport` (+21,7), `mother` (+20,7), `country` (+18,8); nhỏ nhất hoặc âm ở `occupation` (-2,1, loại duy nhất BM25 kém vanilla), `color` (+1,3), `religion` (+2,2), `producer` (+3,0).
+
+Liên hệ mục 3: các loại có nhiều đoạn dùng chung (`producer` 79%, `screenwriter` 52%, `composer` 36%, `genre` 35%, `director` 35%) đều có mức tăng thấp (3,0 đến 7,3 điểm), nhưng `author` (50% đoạn dùng chung) vẫn tăng 14,4 điểm, và hệ số Spearman giữa tỉ lệ đoạn dùng chung và mức tăng của BM25 trên 16 loại chỉ là -0,23, nên đây chỉ là gợi ý yếu.
+
+Liên hệ 4 kết luận: bảng này ủng hộ kết luận 1 (câu càng nổi tiếng càng hay đúng, dương ở 16 trên 16 loại nhưng yếu ở một số loại) và kết luận 3 (BM25 làm phẳng sự phụ thuộc này, giúp mạnh nhất ở các loại vanilla yếu).
+
+### Giới hạn
+
+- Số liệu là trung bình 9 mô hình khác cỡ và khác họ; khoảng nhỏ nhất đến lớn nhất giữa các mô hình nằm trong `results/tables/accuracy_by_relation_summary.csv` và trên hình (rất rộng ở `color`, chỉ 34 câu).
+- Tương quan Pearson với biến 0 hoặc 1 kém ổn định khi tỉ lệ đúng rất thấp (nhiều loại dưới 5%); chưa kiểm ý nghĩa thống kê từng loại.
+- Dùng cách chấm cũ (như paper); mục 1 cho thấy `father` và `country` bị thổi nhiều nhất (2,57 và 2,39 điểm), nên độ chính xác của hai loại này hơi cao.
+- Độ nổi tiếng dùng giá trị `s_pop` của từng câu; chưa chia theo nhóm nổi tiếng trong từng loại.
 
 ## 3. Những lần retrieval gây hại (issue #37)
 
