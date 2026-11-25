@@ -10,6 +10,8 @@
 | **Mở rộng** | 30% | **Hướng A:** Qwen2.5 base (0.5B, 1.5B, 3B) đủ 14.267 câu + kiểm định giả thiết. **Hướng C:** Adaptive theo độ tự tin (`conf`) thay cho độ nổi tiếng (`s_pop`) | **Hoàn thành** |
 | **Phân tích** | 10% | (1) Chấm chặt hơn `is_correct_strict`, (2) 16 loại quan hệ, (3) Retrieval gây hại & đoạn dùng chung (33,6% bộ dữ liệu), (4) Đoạn có đáp án mà vẫn sai | **Hoàn thành** |
 
+- **Slide thuyết trình (22 slides, chuẩn 15 phút):** [Google Slides](https://docs.google.com/presentation/d/1wYAEJkvDLsBqrYge-n0-cyhAbxW94btiLmZKfEOzhB0/edit) · Bản PowerPoint xuất sẵn: [`slides/CS221_Adaptive_Retrieval.pptx`](slides/CS221_Adaptive_Retrieval.pptx)
+
 ---
 
 ## Mục lục
@@ -42,6 +44,8 @@
 │   ├── tables/               # Toàn bộ bảng CSV tổng hợp và kết quả kiểm định thống kê
 │   ├── figs/                 # Các biểu đồ PNG dùng cho báo cáo và slide
 │   └── RUNS.md               # Nhật ký chi tiết mọi phiên chạy GPU (mô hình, GPU, thời gian, link Kaggle)
+├── slides/
+│   └── CS221_Adaptive_Retrieval.pptx  # Bản PowerPoint (22 slides) xuất trực tiếp từ Google Slides của nhóm
 └── docs/
     ├── paper_numbers.csv     # Số liệu trích từ biểu đồ vector PDF của paper gốc (Hình 7, 9, 10, 13)
     ├── BANG_TAI_LAP.md       # Bảng tái lập so với paper, 4 kết luận, và bảng 2×2 retrieval giúp/hại
