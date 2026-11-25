@@ -1,0 +1,6 @@
+# Thư viện cần thiết để chạy lại toàn bộ phân tích, kiểm định thống kê, vẽ hình và unit test trên CPU
+# (Không cần GPU hay PyTorch; chạy trên Python >= 3.10)
+numpy>=1.26,<3
+pandas>=2.0,<4
+scipy>=1.11,<2
+matplotlib>=3.8,<4

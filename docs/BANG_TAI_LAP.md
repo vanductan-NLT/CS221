@@ -1,5 +1,45 @@
 # Bảng tái lập
 
+## Đối chiếu độ chính xác: Paper gốc (ACL 2023) vs Nhóm tái lập (issue #20, #25)
+
+### Nguồn số liệu paper
+
+Paper gốc ([Mallen et al., ACL 2023](https://aclanthology.org/2023.acl-long.546/)) trình bày kết quả tổng hợp dưới dạng biểu đồ vector (Hình 7, Hình 9, Hình 10, Hình 13), không in bảng số rời. Số liệu trong [`docs/paper_numbers.csv`](paper_numbers.csv) được trích trực tiếp từ tọa độ vector của file PDF chính thức (`2023.acl-long.546.pdf`, độ tuyến tính trục y sai số $< 10^{-10}$ pt; Hình 7 và Hình 13 khớp nhau đến 5 chữ số thập phân). Toàn bộ bảng đối chiếu và hình vẽ sinh bằng `python scripts/compare_paper_and_qwen.py` (kiểm bằng `python scripts/test_compare_paper_and_qwen.py`).
+
+![Đối chiếu độ chính xác Paper gốc vs Nhóm tái lập](../results/figs/paper_vs_repro.png)
+
+### Bảng so sánh 6 mô hình tái lập (đủ 14.267 câu PopQA)
+
+| Mô hình | Kiểu số (Nhóm) | Vanilla: Paper → Nhóm ($\Delta$) | BM25: Paper → Nhóm ($\Delta$) | GenRead: Paper → Nhóm ($\Delta$) | Adaptive: Paper → Nhóm ($\Delta$) | Tỉ lệ tra cứu Adaptive: Paper → Nhóm |
+|---|---|---|---|---|---|---|
+| **GPT-Neo 1.3B** | fp32 | 10,75% → **11,35%** (+0,60pp) | 21,51% → **21,61%** (+0,10pp) | 11,90% → **11,65%** (-0,25pp) | — → **21,61%** | 94,0% → **94,9%** |
+| **OPT 1.3B** | fp32 | 12,13% → **12,29%** (+0,16pp) | 22,10% → **21,96%** (-0,14pp) | 11,78% → **12,24%** (+0,46pp) | — → **22,04%** | — → **90,7%** |
+| **GPT-Neo 2.7B** | fp32 | 12,25% → **12,37%** (+0,12pp) | 22,88% → **22,75%** (-0,13pp) | — | 23,31% → **23,27%** (-0,04pp) | 91,0% → **90,8%** |
+| **OPT 2.7B** | fp32 | 12,33% → **12,56%** (+0,23pp) | 23,25% → **23,23%** (-0,02pp) | — | — → **23,79%** | — → **88,5%** |
+| **GPT-J 6B** | fp16 | 16,03% → **16,09%** (+0,06pp) | 24,53% → **24,43%** (-0,10pp) | — | 25,55% → **25,56%** (+0,01pp) | 84,4% → **83,3%** |
+| **OPT 6.7B** | fp16 | 15,70% → **15,66%** (-0,04pp) | 25,02% → **24,62%** (-0,40pp) | — | — → **25,79%** | — → **83,7%** |
+| *Tham khảo (paper, không chạy lại)* | | | | | | |
+| *OPT 13B* | *int8 (paper)* | *17,08%* | *25,41%* | *18,34%* | *—* | *—* |
+| *GPT-NeoX 20B* | *int8 (paper)* | *19,86%* | *25,52%* | *—* | *28,14%* | *74,3%* |
+| *GPT-3 davinci-003* | *API (đã ngừng)* | *34,00%* | *31,86%* | *39,14%* | *39,51%* | *45,0%* |
+
+- **Độ khớp tái lập:** Trên toàn bộ **16 ô độ chính xác** so sánh trực tiếp được, sai lệch tuyệt đối trung bình (**MAD**) chỉ là **0,18 điểm %**, sai lệch lớn nhất chỉ **0,60 điểm %** (GPT-Neo 1.3B vanilla). Các nguyên nhân sai lệch nhỏ đã được kiểm chứng đầy đủ trong [`docs/KHAC_BIET.md`](KHAC_BIET.md): khác phiên bản PyTorch/Transformers (2026 vs 2023), sửa lỗi khóa tra đoạn văn cho 15 ví dụ mẫu (chứng minh qua đối chứng `results/code_goc/`: bản không kèm đoạn chỉ đạt 20,61% cho GPT-Neo 1.3B BM25, kém paper 0,90pp, trong khi bản kèm đoạn đạt 21,61%, khớp paper +0,10pp), ghép kết quả theo `id` thay vì `question`, và nạp `fp16` cho GPT-J 6B / OPT 6.7B để vừa VRAM T4 15 GB.
+- **Đối chiếu thêm với con số ghi trong văn bản paper (Mục 4.2):** Trên 4.000 câu ít nổi tiếng nhất, paper báo GPT-J 6B đạt 15%–16%; kết quả tái lập của nhóm là **15,22%**.
+
+### Kiểm chứng 4 kết luận của paper (trên 6 mô hình paper và 3 mô hình Qwen2.5)
+
+![Độ chính xác theo độ nổi tiếng thực thể trên PopQA](../results/figs/acc_vs_pop.png)
+
+Số liệu định lượng chi tiết cho cả 9 mô hình nằm ở [`results/tables/four_conclusions_check.csv`](../results/tables/four_conclusions_check.csv):
+
+1. **Kết luận 1 — Thực thể càng nổi tiếng, mô hình càng hay trả lời đúng:** **ĐÚNG** trên cả 9/9 mô hình. Tương quan Pearson giữa $\log_{10}(\text{s\_pop})$ và độ đúng vanilla dương có ý nghĩa thống kê rất mạnh ở tất cả mô hình: từ $r = +0{,}088$ ($p = 6{,}4 \times 10^{-26}$, GPT-Neo 1.3B) đến $r = +0{,}231$ ($p = 2{,}7 \times 10^{-172}$, OPT 6.7B) và $r = +0{,}225$ ($p = 1{,}4 \times 10^{-163}$, Qwen2.5 3B). Nhóm 20% nổi tiếng nhất (`Q5`) vượt nhóm 20% ít nổi nhất (`Q1`) tới `+19,9` đến `+20,0` điểm % ở các mô hình lớn.
+2. **Kết luận 2 — Mô hình to hơn chủ yếu giỏi hơn ở câu nổi tiếng (scaling ít cứu được long-tail):** **ĐÚNG** trên cả 3 họ mô hình. Kiểm định Difference-in-Differences giữa mức tăng ở `Q5` và `Q1`:
+   - GPT-Neo 1.3B → GPT-J 6B: `Q1` tăng `+0,11pp` vs `Q5` tăng `+16,12pp` (DiD = `+16,02pp`, Welch $t = 16{,}80$, $p = 1{,}1 \times 10^{-61}$).
+   - OPT 1.3B → OPT 6.7B: `Q1` giảm `-0,28pp` vs `Q5` tăng `+11,39pp` (DiD = `+11,67pp`, Welch $t = 13{,}36$, $p = 5{,}2 \times 10^{-40}$).
+   - Qwen2.5 0.5B → Qwen2.5 3B: `Q1` tăng `+1,26pp` vs `Q5` tăng `+17,60pp` (DiD = `+16,34pp`, Welch $t = 17{,}71$, $p = 4{,}6 \times 10^{-68}$).
+3. **Kết luận 3 — Retrieval giúp mạnh ở câu ít nổi tiếng, nhưng có thể gây hại ở câu nổi tiếng:** **ĐÚNG**. Trong nhóm `Q1` (ít nổi tiếng nhất), BM25 giúp tăng **+16,0 đến +20,4 điểm %** trên cả 9/9 mô hình (McNemar $p < 10^{-85}$). Ngược lại, trong nhóm `Q5` (nổi tiếng nhất), BM25 **gây hại có ý nghĩa thống kê** ở cả 4 mô hình mạnh nhất: GPT-J 6B (`-5,40pp`, $p = 1{,}3 \times 10^{-11}$), Qwen2.5 3B (`-5,15pp`, $p = 2{,}0 \times 10^{-11}$), OPT 6.7B (`-3,26pp`, $p = 4{,}2 \times 10^{-5}$), và Qwen2.5 1.5B (`-1,93pp`, $p = 8{,}1 \times 10^{-3}$).
+4. **Kết luận 4 — Adaptive tốt bằng hoặc hơn cả hai cách, đồng thời giảm số lần tra cứu:** **ĐÚNG** (và nổi bật nhất ở mô hình mạnh). Trên 100 lần chia train/test 75/25 ghép cặp, Adaptive thắng BM25 ở **100/100 lần chia** (Wilcoxon $p < 4 \times 10^{-18}$) cho GPT-Neo 2.7B, GPT-J 6B (`+1,17pp`, giảm tra cứu còn 83,3%), OPT 6.7B (`+1,15pp`, 83,7%), Qwen2.5 1.5B (`+0,85pp`, 82,2%) và Qwen2.5 3B (`+1,29pp`, giảm tra cứu xuống **78,6%**). Với mô hình nhỏ nhất (GPT-Neo 1.3B), lợi ích gần bằng 0 (`-0,04pp`, tra cứu 94,9%), đúng như nhận định của paper ở Hình 9–10.
+
 ## Bảng 1 của paper, làm lại bằng BM25 (issue #29)
 
 ### Paper làm gì
