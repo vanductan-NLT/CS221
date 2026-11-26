@@ -6,7 +6,7 @@
 
 | Phần | Trọng số | Nội dung thực hiện | Trạng thái |
 |---|---:|---|---|
-| **Tái lập** | 60% | 6 mô hình gốc (GPT-Neo 1.3B/2.7B, OPT 1.3B/2.7B/6.7B, GPT-J 6B) × `vanilla`, `BM25`, `GenRead` (1.3B), `Adaptive` đủ 14.267 câu + đối chiếu số liệu paper | **Hoàn thành (MAD = 0,18 điểm %)** |
+| **Tái lập** | 60% | Cả 6 mô hình gốc (GPT-Neo 1.3B/2.7B, OPT 1.3B/2.7B/6.7B, GPT-J 6B) đều chạy `vanilla`, `BM25`, `Adaptive` đủ 14.267 câu; riêng `GenRead` chỉ chạy trên 2 mô hình 1.3B (`GPT-Neo 1.3B`, `OPT 1.3B`) do rất tốn GPU (~18–25h/mô hình) + đối chiếu số liệu paper | **Hoàn thành (MAD = 0,18 điểm %)** |
 | **Mở rộng** | 30% | **Hướng A:** Qwen2.5 base (0.5B, 1.5B, 3B) đủ 14.267 câu + kiểm định giả thiết. **Hướng C:** Adaptive theo độ tự tin (`conf`) thay cho độ nổi tiếng (`s_pop`) | **Hoàn thành** |
 | **Phân tích** | 10% | (1) Chấm chặt hơn `is_correct_strict`, (2) 16 loại quan hệ, (3) Retrieval gây hại & đoạn dùng chung (33,6% bộ dữ liệu), (4) Đoạn có đáp án mà vẫn sai | **Hoàn thành** |
 
@@ -252,6 +252,7 @@ Vì cả 9 mô hình nhận **cùng một đoạn văn BM25 top-1** (`recall@1 =
 | **GPT-3 (`davinci-002`, `davinci-003`)** | OpenAI đã ngừng cung cấp mô hình từ đầu 2024 | Trích số liệu gốc từ PDF paper để đối chiếu tham khảo |
 | **Contriever** | Tác giả xác nhận đã mất thư mục Drive chứa file kết quả ([issue #5](https://github.com/AlexTMallen/adaptive-retrieval/issues/5)) | Dùng file BM25 chính thức tác giả đăng lại; làm lại Bảng 1 bằng BM25 với `recall@1` tính lại chuẩn (25,54%) |
 | **OPT 13B, GPT-NeoX 20B** | Cần VRAM 32 GB (V100), vượt giới hạn GPU miễn phí (T4 15 GB) | Tái lập đầy đủ tới 6B/6.7B (fp16) và mở rộng bằng họ Qwen2.5 (0.5B–3B) |
+| **GenRead cho mô hình ≥ 2.7B & Qwen2.5** | Phải gọi mô hình 2 lần/câu (tự sinh đoạn nền 150 token rồi mới trả lời), cực kỳ tốn giờ GPU (~18–25h ngay ở cỡ 1.3B) trong khi gần như không cải thiện so với `vanilla` ở mô hình nhỏ | Chỉ chạy đủ 14.267 câu trên **2 mô hình 1.3B** (`GPT-Neo 1.3B`, `OPT 1.3B`) để xác nhận kết luận Mục 5.2 của paper; các mô hình còn lại tập trung `vanilla`, `BM25`, `Adaptive` |
 | **EntityQuestions** | Ưu tiên chạy trọn vẹn 14.267 câu PopQA cho cả 9 mô hình | Nêu rõ giới hạn phạm vi trên PopQA |
 
 ### Nguồn
